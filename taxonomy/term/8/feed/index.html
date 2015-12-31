@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xml:base="http://cmsc411.com"  xmlns:dc="http://purl.org/dc/elements/1.1/">
+<channel>
+ <title>CMSC411 - Multiprocessors</title>
+ <link>http://cmsc411.com/topics/multiprocessors</link>
+ <description> 
+Student Projects:
+Parallel Processors
+A General Overview of Parallel Processing
+</description>
+ <language>en</language>
+<item>
+ <title>Rounding Errors, Guard Digits and the IEEE standard</title>
+ <link>http://cmsc411.com/multiprocessors/rounding-errors-guard-digits-and-ieee-standard</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;&lt;span style=&quot;font-size:14px;&quot;&gt;&lt;span style=&quot;line-height: 1.538em;&quot;&gt;As we already know, having a finite number of bits to store an infinite number representation creates quite the problem in computer. The realization that rounding was a necessity soon arose. Most calculations can fit within these contraints however the ones that do not need to be represented in some other way. This introduces the rounding error, the question of what is acceptable and how to measure this error. Consider the following number: &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;div&gt;
+&lt;p&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;&lt;span style=&quot;font-size:14px;&quot;&gt;&lt;span style=&quot;line-height: 1.538em;&quot;&gt;3.12 x 10&lt;/span&gt;&lt;span style=&quot;line-height: normal;&quot;&gt;^2.&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;&lt;span style=&quot;font-size:14px;&quot;&gt;If we compute this number and the answer with infinite precision is .0314 than we can see it is in error by 2 units in the last place.&lt;sup style=&quot;font-family: arial, helvetica, sans-serif; font-size: 14px;&quot;&gt; &lt;/sup&gt;&lt;span style=&quot;line-height: normal;&quot;&gt;Similarly, if the real number .0314159 is represented as 3.14 &lt;/span&gt;&lt;font style=&quot;font-family: Verdana, Arial, Helvetica, sans-serif; font-size: medium; line-height: normal;&quot;&gt;×&lt;/font&gt;&lt;span style=&quot;line-height: normal;&quot;&gt; 10^-2, then it is in error by .159 units in the last place. We can see that this can be measured as:&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;&lt;span style=&quot;font-size:14px;&quot;&gt;&lt;font style=&quot;font-size: medium; line-height: normal;&quot;&gt;&lt;em&gt;|d.d...d&lt;/em&gt;&lt;/font&gt;&lt;font style=&quot;font-family: Verdana, Arial, Helvetica, sans-serif; font-size: medium; line-height: normal;&quot;&gt; - &lt;/font&gt;&lt;font style=&quot;font-size: medium; line-height: normal;&quot;&gt;&lt;em&gt;d.d...d&lt;/em&gt;&lt;/font&gt;&lt;span style=&quot;line-height: normal;&quot;&gt;/Base&lt;sup&gt;exponent&lt;/sup&gt;)|Base&lt;sup&gt;p-1&lt;/sup&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;&lt;span style=&quot;font-size:14px;&quot;&gt;&lt;span style=&quot;line-height: normal;&quot;&gt;This will give us the measurement in &quot;ulps,&quot; which stands for &quot;units in last place.&quot;&lt;sup&gt;&lt;i&gt; &lt;/i&gt;&lt;/sup&gt;&lt;/span&gt;&lt;span style=&quot;line-height: 1.538em;&quot;&gt;&lt;span style=&quot;line-height: normal;&quot;&gt;Another way to measure the difference between a floating-point number and the real number it is approximating is the &lt;u&gt;relative error&lt;/u&gt;, which is simply the difference between the two numbers divided by the real number. For example: &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;&lt;span style=&quot;font-size:14px;&quot;&gt;&lt;span style=&quot;line-height: 1.538em;&quot;&gt;&lt;span style=&quot;line-height: normal;&quot;&gt;3.14159 by 3.14 × 10^0&lt;/span&gt;&lt;span style=&quot;line-height: normal;&quot;&gt; is .00159/3.14159 &lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;line-height: normal;&quot;&gt;≈ .0005.&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font face=&quot;arial, helvetica, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 14px; line-height: 19.1875px;&quot;&gt;One can use multiple guard digits to protect against a roundoff error. When doing multi-step calculations it is typically safe to round the final result a set number of decimal places N. While this can be negligable, it&#039;s not recommended to round during the intermediate calculations the same number of digits.&lt;/span&gt;&lt;/font&gt;&lt;span style=&quot;font-size: 14px; font-family: arial, helvetica, sans-serif; line-height: 19.1875px;&quot;&gt; If &lt;/span&gt;&lt;i style=&quot;font-size: 14px; font-family: arial, helvetica, sans-serif; line-height: 19.1875px;&quot;&gt;M&lt;/i&gt;&lt;span style=&quot;font-size: 14px; font-family: arial, helvetica, sans-serif; line-height: 19.1875px;&quot;&gt; decimal places are used in the intermediate calculation, we say there are &lt;/span&gt;&lt;i style=&quot;font-size: 14px; font-family: arial, helvetica, sans-serif; line-height: 19.1875px;&quot;&gt;M−N&lt;/i&gt;&lt;span style=&quot;font-size: 14px; font-family: arial, helvetica, sans-serif; line-height: 19.1875px;&quot;&gt; guard digits.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;margin-top: 0.4em; margin-bottom: 0.5em; line-height: 19.1875px; font-family: sans-serif;&quot;&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;Guard Digits are also used in floating point operations in most computer systems. Take for example:&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;margin-top: 0.4em; margin-bottom: 0.5em; line-height: 19.1875px; font-family: sans-serif;&quot;&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;2^1 x 0.100 - 2^0 x 0.111 = 0100 - 111&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;margin-top: 0.4em; margin-bottom: 0.5em; line-height: 19.1875px; font-family: sans-serif;&quot;&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;This shows we have to line up binary points and this is when a guard digit comes into play. Now we have:&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;margin-top: 0.4em; margin-bottom: 0.5em; line-height: 19.1875px; font-family: sans-serif;&quot;&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;2^1 x 0.1000 - 2^1 x 0.0111 &lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;margin-top: 0.4em; margin-bottom: 0.5em; line-height: 19.1875px;&quot;&gt;&lt;font face=&quot;arial, helvetica, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;After calculations we get:&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;
+&lt;p style=&quot;margin-top: 0.4em; margin-bottom: 0.5em; line-height: 19.1875px;&quot;&gt;&lt;span style=&quot;font-size:14px;&quot;&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;2^1 x 0.0001&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;margin-top: 0.4em; margin-bottom: 0.5em; line-height: 19.1875px;&quot;&gt;&lt;span style=&quot;font-size:14px;&quot;&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;Without this we would have 2^1 x 0.100 - 2^1 x 0.011 which calculates to:&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;margin-top: 0.4em; margin-bottom: 0.5em; line-height: 19.1875px;&quot;&gt;&lt;span style=&quot;font-size:14px;&quot;&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;2^1 x 0.001&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;margin-top: 0.4em; margin-bottom: 0.5em; line-height: 19.1875px;&quot;&gt;&lt;span style=&quot;font-size:14px;&quot;&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;This gives us a relative error of 1.&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;margin-top: 0.4em; margin-bottom: 0.5em; line-height: 19.1875px;&quot;&gt;&lt;span style=&quot;font-size:14px;&quot;&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;The current standard for Floating Points is the IEEE754. This standard covers arithmetic formats of finite, infinite and special numbers (Not a Number/Nan); which are sets of binary and decimal floating point data. Interchange Formats, a way to exhange loating point data in compact form. Rounding rues, operations and even exception handling are covered as well. There are many different formats of floating point:&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;margin-top: 0.4em; margin-bottom: 0.5em; line-height: 19.1875px;&quot;&gt;&lt;span style=&quot;font-size:14px;&quot;&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;Half Precision&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;margin-top: 0.4em; margin-bottom: 0.5em; line-height: 19.1875px;&quot;&gt;&lt;span style=&quot;font-size:14px;&quot;&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;Single Precision&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;margin-top: 0.4em; margin-bottom: 0.5em; line-height: 19.1875px;&quot;&gt;&lt;span style=&quot;font-size:14px;&quot;&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;Double Precision&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;margin-top: 0.4em; margin-bottom: 0.5em; line-height: 19.1875px;&quot;&gt;&lt;span style=&quot;font-size:14px;&quot;&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;Quadruple Precision&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;margin-top: 0.4em; margin-bottom: 0.5em; line-height: 19.1875px;&quot;&gt;&lt;span style=&quot;font-size:14px;&quot;&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;There is also an extended precision format that allows the user to specify the precision and exponent range.&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Tue, 07 May 2013 03:34:54 +0000</pubDate>
+ <dc:creator>rphumulock</dc:creator>
+ <guid isPermaLink="false">163 at http://cmsc411.com</guid>
+ <comments>http://cmsc411.com/multiprocessors/rounding-errors-guard-digits-and-ieee-standard#comments</comments>
+</item>
+<item>
+ <title>Terminology</title>
+ <link>http://cmsc411.com/multiprocessors/terminology</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt;This page is meant to be a quick explanation of some basic terms that must be known in order to understand the rest of the content.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;L2/L3 Cache Size&lt;/strong&gt; - Intuitively, these are the sizes of the second and third level caches. Specifically, it is important to note that larger cache sizes result in lower miss rates. Lower miss rates improve overall performance, but the larger size also inherently slows performance as well.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Frequency&lt;/strong&gt; - Also clock rate. The faster the frequency, the more often the clock pulses.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Multi-processor&lt;/strong&gt; - A system with multiple processing units. This allows multiple programs to be processed simultaneously.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;CPU socket&lt;/strong&gt; - A component that connects a microprocessor and a circuit board. The speed of transferred data is dependent on the bus speed of the socket used.&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Mon, 06 May 2013 00:01:55 +0000</pubDate>
+ <dc:creator>jlain</dc:creator>
+ <guid isPermaLink="false">155 at http://cmsc411.com</guid>
+ <comments>http://cmsc411.com/multiprocessors/terminology#comments</comments>
+</item>
+<item>
+ <title>References</title>
+ <link>http://cmsc411.com/multiprocessors/references</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt;Hennessy, J., Patterson, D. Computer Architecture A Quantitative Approach. Morgan Kauffman Publishers, 2007&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.intel.com/content/www/us/en/servers/server-products.html&quot;&gt;http://www.intel.com/content/www/us/en/servers/server-products.html &lt;/a&gt;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Sun, 05 May 2013 21:38:21 +0000</pubDate>
+ <dc:creator>jlain</dc:creator>
+ <guid isPermaLink="false">154 at http://cmsc411.com</guid>
+ <comments>http://cmsc411.com/multiprocessors/references#comments</comments>
+</item>
+<item>
+ <title>Xeon Comparison</title>
+ <link>http://cmsc411.com/multiprocessors/xeon-comparison</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt;This page gives a comparison of the different Xeon microprocessor families.&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;Xeon codenames do not refer to specific microprocessors. Instead, they refer to family of similar microprocessors. As such, attributes such as Frequency will be described as a range rather than as a specific value.&lt;/p&gt;
+&lt;p&gt;Xeon series numbers are used in early Xeon families:&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;3--- series are meant for single-CPU operation, rather than for workstations or servers.&lt;/li&gt;
+&lt;li&gt;5--- series are dual-core CPUs meant for use with servers and workstations.&lt;/li&gt;
+&lt;li&gt;7--- series are meant for use with large servers and are multiprocessor-capable&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;After the release of &lt;strong&gt;&quot;Westmere-EX,&quot; &lt;/strong&gt;Intel started a new naming scheme:&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;3--- series became E3----&lt;/li&gt;
+&lt;li&gt;5--- series became E5----&lt;/li&gt;
+&lt;li&gt;7--- series became E7----&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;In addition, codenames that contain &quot;DP&quot; denote dual-core, while &quot;MP denotes multi-core.&lt;/p&gt;
+&lt;table border=&quot;1&quot; width=&quot;559&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td width=&quot;46&quot;&gt;
+&lt;p&gt;&lt;strong&gt;Xeon &lt;/strong&gt;&lt;strong&gt;Series &lt;/strong&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td width=&quot;89&quot;&gt;
+&lt;p&gt;&lt;strong&gt;Codename&lt;/strong&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td width=&quot;74&quot;&gt;&lt;strong&gt;Frequency (MHz)&lt;/strong&gt;&lt;/td&gt;
+&lt;td width=&quot;119&quot;&gt;&lt;strong&gt;L2 Cache &lt;/strong&gt;&lt;/td&gt;
+&lt;td width=&quot;102&quot;&gt;&lt;strong&gt;L3 Cache&lt;/strong&gt;&lt;/td&gt;
+&lt;td width=&quot;89&quot;&gt;&lt;strong&gt;Production Dates (M/Y)&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;Drake&lt;/td&gt;
+&lt;td&gt;400-450&lt;/td&gt;
+&lt;td&gt;512 KB - 2 MB&lt;/td&gt;
+&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;06/98 - 01/99&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;Tanner&lt;/td&gt;
+&lt;td&gt;500-550&lt;/td&gt;
+&lt;td&gt;512 KB - 2 MB&lt;/td&gt;
+&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;03/99 - 08/99&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;Cascades&lt;/td&gt;
+&lt;td&gt;600-1000&lt;/td&gt;
+&lt;td&gt;256 KB - 2 MB&lt;/td&gt;
+&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;10/99 - 03/01&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;Foster&lt;/td&gt;
+&lt;td&gt;1400-2000&lt;/td&gt;
+&lt;td&gt;256 KB&lt;/td&gt;
+&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;05/01 - 09/01&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;Prestonia&lt;/td&gt;
+&lt;td&gt;1600-3066&lt;/td&gt;
+&lt;td&gt;512 KB&lt;/td&gt;
+&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;02/02 - 03/03&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;Foster MP&lt;/td&gt;
+&lt;td&gt;1400-1600&lt;/td&gt;
+&lt;td&gt;256 KB&lt;/td&gt;
+&lt;td&gt;512 KB - 1 MB&lt;/td&gt;
+&lt;td&gt;03/02&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;Gallatin&lt;/td&gt;
+&lt;td&gt;2400-3200&lt;/td&gt;
+&lt;td&gt;512 KB&lt;/td&gt;
+&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;03/03 - 02/04&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;Nocona&lt;/td&gt;
+&lt;td&gt;2800-3600&lt;/td&gt;
+&lt;td&gt;1 MB&lt;/td&gt;
+&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;06/04&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;Irwindale&lt;/td&gt;
+&lt;td&gt;2800-3800&lt;/td&gt;
+&lt;td&gt;2 MB&lt;/td&gt;
+&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;02/05 - 09/05&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;Cranford&lt;/td&gt;
+&lt;td&gt;3166-3667&lt;/td&gt;
+&lt;td&gt;1 MB&lt;/td&gt;
+&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;03/05&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;Potomac&lt;/td&gt;
+&lt;td&gt;2833-3333&lt;/td&gt;
+&lt;td&gt;1 MB&lt;/td&gt;
+&lt;td&gt;4 MB - 8 MB&lt;/td&gt;
+&lt;td&gt;03/05&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;Paxville DP&lt;/td&gt;
+&lt;td&gt;2800&lt;/td&gt;
+&lt;td&gt;4 MB&lt;/td&gt;
+&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;10/05&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;7000&lt;/td&gt;
+&lt;td&gt;Paxville MP&lt;/td&gt;
+&lt;td&gt;2667-3000&lt;/td&gt;
+&lt;td&gt;2 MB - 4 MB&lt;/td&gt;
+&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;12/05&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;Sossaman&lt;/td&gt;
+&lt;td&gt;1660-2160&lt;/td&gt;
+&lt;td&gt;2 MB&lt;/td&gt;
+&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;03/06&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;5000&lt;/td&gt;
+&lt;td&gt;Dempsey&lt;/td&gt;
+&lt;td&gt;2500-3730&lt;/td&gt;
+&lt;td&gt;4 MB&lt;/td&gt;
+&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;05/06 - 08/08&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;7100&lt;/td&gt;
+&lt;td&gt;Tulsa&lt;/td&gt;
+&lt;td&gt;2500-3500&lt;/td&gt;
+&lt;td&gt;2 MB&lt;/td&gt;
+&lt;td&gt;4 MB - 16 MB&lt;/td&gt;
+&lt;td&gt;08/06 - 08/08&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;3000&lt;/td&gt;
+&lt;td&gt;Conroe&lt;/td&gt;
+&lt;td&gt;1860-3000&lt;/td&gt;
+&lt;td&gt;2 MB - 4 MB&lt;/td&gt;
+&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;09/06 - 10/07&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;5100&lt;/td&gt;
+&lt;td&gt;Woodcrest&lt;/td&gt;
+&lt;td&gt;1600-3000&lt;/td&gt;
+&lt;td&gt;4 MB&lt;/td&gt;
+&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;06/06 - 12/06&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;5300&lt;/td&gt;
+&lt;td&gt;Clovertown&lt;/td&gt;
+&lt;td&gt;1600-3000&lt;/td&gt;
+&lt;td&gt;8 MB&lt;/td&gt;
+&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;11/06 - 08/08&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;3200&lt;/td&gt;
+&lt;td&gt;Kentsfield&lt;/td&gt;
+&lt;td&gt;2130-2670&lt;/td&gt;
+&lt;td&gt;8 MB&lt;/td&gt;
+&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;01/07 - 06/07&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;3000&lt;/td&gt;
+&lt;td&gt;Allendale&lt;/td&gt;
+&lt;td&gt;1800-2600&lt;/td&gt;
+&lt;td&gt;2 MB&lt;/td&gt;
+&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;01/07 - 03/08&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
+&lt;p&gt;7200&lt;br /&gt;7300&lt;/p&gt;
+&lt;/td&gt;
+&lt;td&gt;Tigerton&lt;/td&gt;
+&lt;td&gt;2400-2930&lt;br /&gt;1600-2930&lt;/td&gt;
+&lt;td&gt;8 MB&lt;br /&gt;4 MB - 8 MB&lt;/td&gt;
+&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;09/07&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;5200&lt;/td&gt;
+&lt;td&gt;Wolfdale-DP&lt;/td&gt;
+&lt;td&gt;1870-3500&lt;/td&gt;
+&lt;td&gt;6 MB&lt;/td&gt;
+&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;11/07 - 09/08&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;5400&lt;/td&gt;
+&lt;td&gt;Harpertown&lt;/td&gt;
+&lt;td&gt;2000-3400&lt;/td&gt;
+&lt;td&gt;12 MB&lt;/td&gt;
+&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;11/07 - 09/08&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;3300&lt;/td&gt;
+&lt;td&gt;Yorkfield&lt;/td&gt;
+&lt;td&gt;2670-3170&lt;/td&gt;
+&lt;td&gt;12 MB&lt;/td&gt;
+&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;03/08 - 02/09&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;3100&lt;/td&gt;
+&lt;td&gt;Wolfdale&lt;/td&gt;
+&lt;td&gt;3000-3160&lt;/td&gt;
+&lt;td&gt;6 MB&lt;/td&gt;
+&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;01/08 - 02/09&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;3300&lt;/td&gt;
+&lt;td&gt;Yorkfield-6M&lt;/td&gt;
+&lt;td&gt;2500-2670&lt;/td&gt;
+&lt;td&gt;6 MB&lt;/td&gt;
+&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;03/08 - 08/08&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;3100&lt;/td&gt;
+&lt;td&gt;Wolfdale-CL&lt;/td&gt;
+&lt;td&gt;2400-3000&lt;/td&gt;
+&lt;td&gt;3 MB - 6 MB&lt;/td&gt;
+&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;02/08 - 09/08&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;7400&lt;/td&gt;
+&lt;td&gt;Dunnington&lt;/td&gt;
+&lt;td&gt;2133-2667&lt;/td&gt;
+&lt;td&gt;6 MB - 9 MB&lt;/td&gt;
+&lt;td&gt;8 MB - 12 MB&lt;/td&gt;
+&lt;td&gt;09/08&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;5500&lt;/td&gt;
+&lt;td&gt;Gainestown&lt;/td&gt;
+&lt;td&gt;1870-3300&lt;/td&gt;
+&lt;td&gt;512 KB - 1 MB&lt;/td&gt;
+&lt;td&gt;4 MB - 8 MB&lt;/td&gt;
+&lt;td&gt;03/09 - 03/10&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;3500&lt;/td&gt;
+&lt;td&gt;Bloomfield&lt;/td&gt;
+&lt;td&gt;2400-3330&lt;/td&gt;
+&lt;td&gt;512 KB - 1 MB&lt;/td&gt;
+&lt;td&gt;4 MB - 8 MB&lt;/td&gt;
+&lt;td&gt;03/09 - 03/10&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;3400&lt;/td&gt;
+&lt;td&gt;Lynnfield&lt;/td&gt;
+&lt;td&gt;1870-3070&lt;/td&gt;
+&lt;td&gt;1 MB&lt;/td&gt;
+&lt;td&gt;8 MB&lt;/td&gt;
+&lt;td&gt;09/09 - 05/10&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;3500&lt;br /&gt;5500&lt;/td&gt;
+&lt;td&gt;Jasper Forest&lt;/td&gt;
+&lt;td&gt;1730-2130&lt;br /&gt;1730-2530&lt;/td&gt;
+&lt;td&gt;256 KB - 1 MB&lt;br /&gt;512 KB - 1 MB&lt;/td&gt;
+&lt;td&gt;2 MB - 8 MB&lt;br /&gt;4 MB - 8 MB&lt;/td&gt;
+&lt;td&gt;02/10&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;3400&lt;/td&gt;
+&lt;td&gt;Clarkdale&lt;/td&gt;
+&lt;td&gt;2000-2270&lt;/td&gt;
+&lt;td&gt;512 KB&lt;/td&gt;
+&lt;td&gt;4 MB&lt;/td&gt;
+&lt;td&gt;03/10 - 10/10&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;3600&lt;br /&gt;5600&lt;/td&gt;
+&lt;td&gt;Gulftown&lt;br /&gt;Westmere-EP&lt;/td&gt;
+&lt;td&gt;3200-3470&lt;br /&gt;1600-4400&lt;/td&gt;
+&lt;td&gt;1.5 MB&lt;br /&gt;512 KB - 1.5 MB&lt;/td&gt;
+&lt;td&gt;12 MB&lt;br /&gt;4 MB - 12 MB&lt;/td&gt;
+&lt;td&gt;08/10 - 02/11&lt;br /&gt;03/10 - 02/11&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;6500&lt;br /&gt;7500&lt;/td&gt;
+&lt;td&gt;Beckton&lt;/td&gt;
+&lt;td&gt;1730-2000&lt;br /&gt;1760-2660&lt;/td&gt;
+&lt;td&gt;1 MB - 2 MB&lt;/td&gt;
+&lt;td&gt;12 MB - 24 MB&lt;/td&gt;
+&lt;td&gt;03/10&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;E7-800&lt;/td&gt;
+&lt;td&gt;Westmere-EX&lt;/td&gt;
+&lt;td&gt;1730-2400&lt;/td&gt;
+&lt;td&gt;1.5 MB - 2.5 MB&lt;/td&gt;
+&lt;td&gt;18 MB - 30 MB&lt;/td&gt;
+&lt;td&gt;04/11&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;E31200&lt;/td&gt;
+&lt;td&gt;Sandy Bridge&lt;/td&gt;
+&lt;td&gt;2200-3600&lt;/td&gt;
+&lt;td&gt;512 KB - 1 MB&lt;/td&gt;
+&lt;td&gt;3 MB - 8 MB&lt;/td&gt;
+&lt;td&gt;04/11&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;E51600&lt;/td&gt;
+&lt;td&gt;SB E&lt;/td&gt;
+&lt;td&gt;2800-3600&lt;/td&gt;
+&lt;td&gt;1 MB - 1.5 MB&lt;/td&gt;
+&lt;td&gt;10 MB - 15 MB&lt;/td&gt;
+&lt;td&gt;03/12&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;E52600&lt;/td&gt;
+&lt;td&gt;SB EP&lt;/td&gt;
+&lt;td&gt;1800-3300&lt;/td&gt;
+&lt;td&gt;512 KB - 2 MB&lt;/td&gt;
+&lt;td&gt;5 MB - 20 MB&lt;/td&gt;
+&lt;td&gt;03/12&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;E31100&lt;/td&gt;
+&lt;td&gt;Gladden&lt;/td&gt;
+&lt;td&gt;1000-2000&lt;/td&gt;
+&lt;td&gt;1 MB&lt;/td&gt;
+&lt;td&gt;6 MB - 8 MB&lt;/td&gt;
+&lt;td&gt;05/12&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;E51400&lt;/td&gt;
+&lt;td&gt;SB EN&lt;/td&gt;
+&lt;td&gt;1800-2800&lt;/td&gt;
+&lt;td&gt;1 MB - 1.5 MB&lt;/td&gt;
+&lt;td&gt;10 MB - 15 MB&lt;/td&gt;
+&lt;td&gt;05/12&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;E52400&lt;/td&gt;
+&lt;td&gt;SB EN&lt;/td&gt;
+&lt;td&gt;1800-2400&lt;/td&gt;
+&lt;td&gt;1 MB - 2 MB&lt;/td&gt;
+&lt;td&gt;10 MB - 20 MB&lt;/td&gt;
+&lt;td&gt;05/12&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;E54600&lt;/td&gt;
+&lt;td&gt;SB EP&lt;/td&gt;
+&lt;td&gt;2000-2900&lt;/td&gt;
+&lt;td&gt;1 MB - 2 MB&lt;/td&gt;
+&lt;td&gt;10 MB - 20 MB&lt;/td&gt;
+&lt;td&gt;05/12&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;E31200&lt;/td&gt;
+&lt;td&gt;Ivy Bridge&lt;/td&gt;
+&lt;td&gt;2300-3700&lt;/td&gt;
+&lt;td&gt;512 KB - 1 MB&lt;/td&gt;
+&lt;td&gt;3 MB - 8 MB&lt;/td&gt;
+&lt;td&gt;05/12&lt;/td&gt;
+&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;p&gt; &lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Sun, 05 May 2013 21:02:47 +0000</pubDate>
+ <dc:creator>jlain</dc:creator>
+ <guid isPermaLink="false">153 at http://cmsc411.com</guid>
+ <comments>http://cmsc411.com/multiprocessors/xeon-comparison#comments</comments>
+</item>
+<item>
+ <title>About Xeon</title>
+ <link>http://cmsc411.com/multiprocessors/about-xeon</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt;Xeon is a brand of microprocessors produced by Intel Corporation since 1998. These are created for use in workstations, servers, and embedded systems. Due to this, they are designed to be considerably more powerful than other processors.&lt;/p&gt;
+&lt;p&gt;All Xeon-brand processors are based off of existing Intel microprocessors. For example, the first Xeon chips were based off of chips from the Pentium II processors while newer processors are Nehalem (i7) based or based on the Sandy Bridge line.&lt;/p&gt;
+&lt;p&gt;On Intel&#039;s website, the Xeon line is said to have a &quot;robust set of reliability, availability, and serviceability features&quot; called RAS. A few features of RAS are:&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;&lt;strong&gt;CMCI for Prediction Failure Analysis&lt;/strong&gt; - CMCI stands for Corrected Machine Check Interrupt. This feature sends a report to the OS when hardware errors are corrected. This has no immediate effect, but it helps the OS predict and avoid problems in the future.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;MCA Recovery&lt;/strong&gt; - MCA stands for Machine Check Architecture. This feature lets the processor ask applications or the OS for help when confronted with problems that the hardware cannot deal with.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Processor/Memory Hot Add&lt;/strong&gt; - It is possible to add processors and memory to a running system.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Processory Sparing with OS Assisted Socket Migration - &lt;/strong&gt;Reassigns a CPU workload to a spare CPU.&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;In addition, Intel&#039;s website shows that Xeon holds several world records in performance as of May 8, 2012, seen &lt;a href=&quot;http://www.intel.com/content/www/us/en/benchmarks/server/xeon-e7-summary.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Sun, 05 May 2013 09:42:42 +0000</pubDate>
+ <dc:creator>jlain</dc:creator>
+ <guid isPermaLink="false">152 at http://cmsc411.com</guid>
+ <comments>http://cmsc411.com/multiprocessors/about-xeon#comments</comments>
+</item>
+<item>
+ <title>The Cache Coherence Problem</title>
+ <link>http://cmsc411.com/multiprocessors/cache-coherence-problem</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt;&lt;strong style=&quot;line-height: 1.538em;&quot;&gt;The Cache Coherency Problem&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;http://www.windowsnetworking.com/img/upl/image0021228912262889.jpg&quot; style=&quot;width: 553px; height: 327px;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;                Cache coherence deals with maintaining consistent data between shared resources with individual local caches.  Cache coherence problems arise when there are multiple levels of caching with different scopes.  Multiprocessors may have both private (local) or shared (global) levels of caches which may cause a coherence problem.  As shown in the above figure, there will exist at least four separate caches that must be coherent and these caches are each associated with a core. To solve cache coherence problems, we must determine how to enforce coherence and consistency.  &lt;strong&gt;Coherence&lt;/strong&gt; defines the behavior of reads and writes to the same memory location.  &lt;strong&gt;Consistency&lt;/strong&gt; defines the behavior of reads and writes when accesses to different memory locations occur. &lt;/p&gt;
+&lt;p&gt;                Two aspects of a coherent multiprocessor are &lt;strong&gt;migration&lt;/strong&gt; and &lt;strong&gt;replication&lt;/strong&gt;.  Coherent caches must provide migration, which means moving data to local memory for use.  Migration lowers the latency and bandwidth of accessing shared data that is not available locally.  Replication is similar to migration, except that shared data is copied into local caches instead of moved.  Replication lowers conflicts between multiple shared data reads as well as latency.  In order to main coherent caches, &lt;strong&gt;cache coherence protocols&lt;/strong&gt; are implemented as a hardware solution rather than a software solution. &lt;/p&gt;
+&lt;p&gt;                A &lt;strong&gt;Cache Coherence Protocol&lt;/strong&gt; tracks shared data blocks and their various states.  There are two types of coherence protocols:&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Snooping – &lt;/strong&gt;when data is copied to a local cache, every other cache with the data from the same block can track the sharing of the memory block (hence the term snooping).  For SMP’s (here: &lt;a href=&quot;/node/38&quot;&gt;Shared Memory Architectures&lt;/a&gt; ), caches are usually connected with a bus.  All of the caches, or cache controllers, can snoop via the bus to see if their data is being requested by another cache. In the figure below, Cache A and Cache B are connected via a bus.  When Cache B receives a snoop hit from Cache A, which has requested it from memory, a data transfer occurs between the two caches.&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;http://tibrewala.net/papers/mesi98/BusCache.jpg&quot; style=&quot;width: 678px; height: 388px;&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Directory-based coherence – &lt;/strong&gt;the state of a shared block of memory is kept in a directory.  All of the information about data sharing is kept in one location.  For SMP’s, one central directory is used, however, a single directory doesn’t fit the demands of a DSM (discussed earlier).    &lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;COMA (Cache-Only Memory Architecture) &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;                Unlike the &lt;strong&gt;NUMA &lt;/strong&gt;memory organization (discussed here: &lt;a href=&quot;/node/38&quot;&gt;Shared Memory Architectures&lt;/a&gt;), &lt;strong&gt;COMA&lt;/strong&gt; is a multiprocessor memory organization which treats local memories of nodes as caches.  NUMA organizations treat local memories as main memory.   Another difference between the two memory organizations is the use of home nodes.  For NUMA, addresses are assigned to static home nodes and remain at the static home node regardless of data being accessed and copied (replication).  For COMA, data accesses result in migration of the data and there is no use of any fixed locations.  This means that NUMA organizations must keep track of more copies of data and more possible inconsistencies.&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Thu, 02 May 2013 02:20:48 +0000</pubDate>
+ <dc:creator>szhess</dc:creator>
+ <guid isPermaLink="false">89 at http://cmsc411.com</guid>
+ <comments>http://cmsc411.com/multiprocessors/cache-coherence-problem#comments</comments>
+</item>
+<item>
+ <title>Xeon Test</title>
+ <link>http://cmsc411.com/multiprocessors/xeon-test</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt;The following questions should be able to be answered, there are also solutions on the next page:&lt;/p&gt;
+&lt;p&gt;1. What type(s) of systems are Xeon chips designed for?
+&lt;/p&gt;
+&lt;p&gt;  &lt;/p&gt;
+&lt;p&gt;2. What is AMD&#039;s server-oriented microprocessor which serves      as Xeon&#039;s main competition?&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;3. What does &quot;MP&quot; mean in Xeon processor codenames?&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;4. What does &quot;DP&quot; mean in Xeon processor codenames?&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;5. In Xeon model numbers, what would a card numbered 7230 be designed to do?&lt;/p&gt;
+
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Thu, 02 May 2013 00:24:44 +0000</pubDate>
+ <dc:creator>nink</dc:creator>
+ <guid isPermaLink="false">83 at http://cmsc411.com</guid>
+ <comments>http://cmsc411.com/multiprocessors/xeon-test#comments</comments>
+</item>
+<item>
+ <title>Higher-level Parallel Processing</title>
+ <link>http://cmsc411.com/multiprocessors/higher-level-parallel-processing</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p align=&quot;center&quot;&gt;&lt;strong&gt;&lt;u&gt;Thread-Level Parallelism&lt;/u&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;Advantages&lt;br /&gt;&lt;ul style=&quot;list-style-type:circle;&quot;&gt;&lt;li&gt;Can process n things in n / # of threads time&lt;/li&gt;
+&lt;li&gt;Memory space is shared between threads&lt;/li&gt;
+&lt;li&gt;Can mitigate cost of IO operations&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Disadvantages&lt;br /&gt;&lt;ul style=&quot;list-style-type:circle;&quot;&gt;&lt;li&gt;&lt;em&gt;Very&lt;/em&gt; hard to prevent race conditions&lt;/li&gt;
+&lt;li&gt;Starting a new thread is relatively expensive&lt;/li&gt;
+&lt;li&gt;Possibility of deadlock&lt;/li&gt;
+&lt;li&gt;Memory space is shared between threads&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;This type of parallelism is one that is implemented at the operating system (OS) level, similar to process-level parallelism. The developer can create threads at any point during runtime of the program, though they are relatively expensive to do so and a common technique to mitigate this is to pool them, so that this cost is only paid once.&lt;/p&gt;
+&lt;p&gt;Threads, while a common and easy-to-use level of parallelism, are the hardest type of parallelism to properly implement. Because threads share the same memory space, they can access the same pieces of memory. This can cause what is known as data races, where two threads attempt to access the same piece of memory at the same time. This is dangerous when, for example, the size of something such as an array list is modified by two threads at the same time. There is no way to know what the size of the array will be after both threads are finished modifying it, at least without the help of locks that prevent more than one thread from running a certain section of code at the same time.&lt;/p&gt;
+&lt;p&gt;In the modern day, threads are practically a necessity. Processors are getting more cores with which to run multiple things, but their basic clock speeds are not increasing. In order to be able to create a program which will continue to speed up as processors advance and more cores are added, the program needs to be able to exploit multiple cores instead of relying on just a single one. However, this is highly challenging due to the aforementioned data races. Even with the use of locks to prevent two or more threads from running a single section of code at the same time, it can be tricky to manage the locks and the flow of data in a bug-free way.&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;Basic techniques for safe multi-threading&lt;br /&gt;&lt;ul style=&quot;list-style-type:circle;&quot;&gt;&lt;li&gt;Data copying
+&lt;ul&gt;&lt;li&gt;Any data that a separate thread uses is copied and sent to that thread, so that no data races will exist.&lt;/li&gt;
+&lt;li&gt;Uses more memory, but it’s safe&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Immutable Data Structures
+&lt;ul&gt;&lt;li&gt;Some languages enforce this, (Clojure, Haskell) but the basic principle is that any data structures you use to represent the state of the program are unable to be modified at any time.&lt;/li&gt;
+&lt;li&gt;This is similar to data copying, but only in that a “changed” data structure is actually a new copy of that data structure.&lt;/li&gt;
+&lt;li&gt;You can pass the any data around as much as you want without having to worry about data races.&lt;/li&gt;
+&lt;li&gt;Uses more memory and is less efficient (in general) than using mutable data structures. Can still be pretty close to the performance of a program using mutable data structures, with clever enough programming. (or a language that is clever with how it uses data)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Actors and Message Passing
+&lt;ul&gt;&lt;li&gt;This technique separates all logic into their own chunks of memory which cannot modify chunks of memory it does not own. These bits of logic are called “actors”.&lt;/li&gt;
+&lt;li&gt;Can only send messages to other actors, which will have to react to the message to change their internal state.&lt;/li&gt;
+&lt;li&gt;Offers a clean separation of data, as well as removes race conditions for everything except the thread(s) which manage the actors.&lt;/li&gt;
+&lt;li&gt;Uses more memory and is slower than a program which can modify all data at any time. However it is much safer, and can scale basically infinitely.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Global Interpreter Lock (GIL)
+&lt;ul&gt;&lt;li&gt;Employs a single lock that prevents more than one thread from running any code at all.&lt;/li&gt;
+&lt;li&gt;This strategy is employed by some programming languages (Python, Ruby) and while useful for single-threaded performance, severely hurts using multiple threads due to lock contention.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Guarantee that no race conditions exist when compiling
+&lt;ul&gt;&lt;li&gt;This requires language-level support as well as demarcations for how certain data will be used. For example, marking a piece of data as mutable, or only owned by a single thread. The compiler looks at all of this, and when it sees the possibility of a piece of data being mutated by two or more threads, it will generate an error and refuse to compile.&lt;/li&gt;
+&lt;li&gt;As far as I know, only one language does this. (Rust)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt; &lt;/p&gt;
+&lt;p align=&quot;center&quot;&gt;&lt;strong&gt;&lt;u&gt;Process-Level Parallelism&lt;/u&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;Advantages&lt;br /&gt;&lt;ul style=&quot;list-style-type:circle;&quot;&gt;&lt;li&gt;Completely safe parallelism&lt;/li&gt;
+&lt;li&gt;Memory space is not shared between processes&lt;/li&gt;
+&lt;li&gt;Easy to recover from an error that shuts down a process&lt;/li&gt;
+&lt;li&gt;Technically enables “hot-swapping” of new code by killing the old processes starting new child processes with the new executable&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Disadvantages&lt;br /&gt;&lt;ul style=&quot;list-style-type:circle;&quot;&gt;&lt;li&gt;Requires more memory&lt;/li&gt;
+&lt;li&gt;Memory space is not shared between processes&lt;/li&gt;
+&lt;li&gt;Requires a “master” process to manage the child processes&lt;/li&gt;
+&lt;li&gt;Expensive to send data between processes&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;This type of parallelism separates all the concurrently running code into its own memory space, with no possibility of overlap. While this means that there is no chance of data races between the multiple programs running, more memory is consumed as a full program needs to be running. There is also a cost that is incurred by communication between the processes. Each process cannot share memory, and so it has to use facilities provided by the OS to pass messages back and forth with each other. This is similar to the actor model given above for multiple threads, but can be slower than an environment designed for handling that technique quickly and efficiently inside of a single memory space. In particular, sending entire data structures between processes takes a while to encode the data being sent, (known as marshaling) and then decoding the data when it arrives. Process-level parallelism also generally requires a “master” process that manages all child processes. It needs to start the child processes, send data to them to work on, etc. This is a very common pattern in web frameworks, (Gunicorn, Apache) but can be tricky to ensure that an even load of work is spread across all child processes.&lt;/p&gt;
+&lt;p&gt;Process-level parallelism can also guarantee some level of redundancy and safety for certain circumstances. As an example, say you have 10 threads doing some work, and 10 processes doing some work. One of the 10 threads throws an exception that doesn’t get caught, and shuts down the entire program. Those 10 threads then disappear and all work stops. (very bad for uptime in a server farm) On the other side, one of the 10 processes throws the same kind of exception and it shuts down. The other 9 processes continue to do work, and the master process can restart the 10&lt;sup&gt;th&lt;/sup&gt; process, causing only a slight hiccup in processing and zero downtime.&lt;/p&gt;
+&lt;p&gt;For some languages, process-level parallelism is a necessity for getting truly concurrent execution. (Python, Ruby) These languages can even provide highly convenient tools for managing multiple processes and the communication between them. While this is technically a restraint that gets placed on the developers and an extra consideration for how to build their application, it could be considered a beneficial restraint due to all the difficulty in implementing correct thread-level parallelism.&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Wed, 01 May 2013 20:23:14 +0000</pubDate>
+ <dc:creator>FreezerburnV</dc:creator>
+ <guid isPermaLink="false">80 at http://cmsc411.com</guid>
+ <comments>http://cmsc411.com/multiprocessors/higher-level-parallel-processing#comments</comments>
+</item>
+<item>
+ <title>Ins and Outs of Parallel Processing</title>
+ <link>http://cmsc411.com/multiprocessors/ins-and-outs-parallel-processing</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt;Created By: Sarah Hess, John Duarte, and Vincent Kuyatt&lt;/p&gt;
+&lt;p&gt;&lt;strong style=&quot;line-height: 1.538em;&quot;&gt;What is Parallel Processing?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;                &lt;strong&gt;Parallel processing&lt;/strong&gt; refers to the use of multiple processing elements so that concurrent tasks can execute in parallel with the goal of solving a large problem in a small amount of time.  Parallel computing and programming involves breaking down a problem or task into smaller parts that can be executed concurrently. There are several main types of parallelism, each of which concerns different aspects of computer hardware and software.&lt;/p&gt;
+&lt;p&gt;To learn more about the different types of parallelism: &lt;a href=&quot;http://cmsc411.com/multiprocessors/higher-level-parallel-processing&quot; style=&quot;line-height: 1.538em;&quot;&gt;Jump here for Thread and Process level parallelism!&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;It is important to note that Parallelism is not the same as concurrency.  &lt;strong&gt;Concurrency&lt;/strong&gt; refers to multiple computations or tasks executing simultaneously&lt;strong&gt;.  Parallelism&lt;/strong&gt; exploits concurrency to increase throughput and reduce the execution time of tasks. &lt;/p&gt;
+&lt;p&gt;&lt;strong style=&quot;line-height: 1.538em;&quot;&gt;Challenges with Parallel processing&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;                In an ideal situation, programs executing in parallel would use all of their hardware resources efficiently.  In reality, the multiple processing elements in a parallel machine often end up interfering with each other.  It is difficult to have multiple CPU’s  or cores executing completely independent parts of a program.  This makes parallel programming more challenging that programming for sequential machines.   Issues with concurrency such as race conditions and synchronization are common.&lt;/p&gt;
+&lt;p&gt;                The hardware requirements for parallel computing also put a few constraints on the technology.  First, the increased amount of processing units and higher sophistication of processing in general make parallel computing a poor choice for most mobile devices.  Two of the main considerations for mobile device design are low cost and increased speed, which would not benefit from parallel processing.  Second, the hardware requirements require more power, another undesirable requirement for mobile devices. &lt;/p&gt;
+&lt;p&gt;To learn more about hardware architecture: &lt;a href=&quot;http://cmsc411.com/multiprocessors/all-about-architectures&quot; style=&quot;line-height: 1.538em;&quot;&gt;Jump here for All About Architectures!&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong style=&quot;line-height: 1.538em;&quot;&gt;Benefits of Parallel Processing&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;                While parallel computing does pose challenges to certain programs, it is vastly quicker when applied to repetitive calculations on large amounts of data.  &lt;span style=&quot;line-height: 1.538em;&quot;&gt; Parallel processing also reduces the execution time of tasks, thereby increasing throughput.  &lt;/span&gt;&lt;span style=&quot;line-height: 1.538em;&quot;&gt;Graphics cards are one of the best applications of parallel processing due to the repetitive nature of their jobs.          &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;line-height: 1.538em;&quot;&gt;After reading up about parallel processing and architectures, try your hand at some &lt;a href=&quot;/node/47&quot;&gt;Questions&lt;/a&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Tue, 30 Apr 2013 00:53:08 +0000</pubDate>
+ <dc:creator>jduarte</dc:creator>
+ <guid isPermaLink="false">45 at http://cmsc411.com</guid>
+ <comments>http://cmsc411.com/multiprocessors/ins-and-outs-parallel-processing#comments</comments>
+</item>
+<item>
+ <title>All About Architectures</title>
+ <link>http://cmsc411.com/multiprocessors/all-about-architectures</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The basics: Flynn’s Taxonomy&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;In 1966, Michael J. Flynn introduced us to the four classifications of computer architectures, each of which is based off of the number of concurrent instructions and data streams available in the architecture. These four classifications are:&lt;/p&gt;
+&lt;ul style=&quot;margin-left: 80px;&quot;&gt;&lt;li&gt;&lt;strong&gt;Single Instruction – Single Data Stream&lt;/strong&gt;: The uniprocessor; Exploits no parallelism but is still the oldest and most common type of computer.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Multiple Instruction – Single Data Stream&lt;/strong&gt;: A single data stream is fed into multiple processing units, where each unit operates on the data independently via separate instruction streams. Few actual examples of this type of architecture exist. It can have applications in cryptography though, where one would use several different algorithms to try and decode a secret.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;em&gt;Single Instruction – Multiple Data Stream&lt;/em&gt;&lt;/strong&gt;: One instruction broadcasted globally by a single control unit is executed by multiple processors at the same time, each of which uses different data streams. SIMD machines are tailored toward applications that exhibit large amounts of data parallelism without complicated control flow or excessive amounts of inter-processor communication. SIMD is widely used for vector and matrix operations.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;em&gt;Multiple Instruction – Multiple Data Stream&lt;/em&gt;&lt;/strong&gt;: A number of independent processors executing different instructions on different pieces of data. MIMD computers exploit thread-level parallelism, and do not rely on a single control unit to issue instructions. MIMDs can function as single user machines focusing on high performance for one application, as multiprogrammed machines running many tasks simultaneously, or as some combination of these functions.&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;This page will focus on SIMD and MIMD, as these are the two most widely used architectures.&lt;/p&gt;
+&lt;p&gt;Below are the links to the good stuff!&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://cmsc411.com/simd-vs-mimd&quot;&gt;SIMD vs. MIMD&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Looking at the figures on the SIMD vs. MIMD page, we can see that the general design of the two architectures is similar. We can also tell that there are two important issues that arise when designing a parallel architecture containing numerous processing elements. Namely, &lt;strong&gt;how should memory be organized, and how should the processing elements communicate between one another&lt;/strong&gt;?&lt;/p&gt;
+&lt;p&gt;We’ll take a look at two classes which dictate memory organization and interconnect strategy. These are:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://cmsc411.com/multiprocessors/shared-memory-architectures&quot;&gt; &lt;em&gt;Shared-Memory architectures&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://cmsc411.com/distributed-memory-architecture&quot;&gt; &lt;em&gt;Distributed-Memory architectures&lt;/em&gt; &lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;An important aspect we have yet to discuss has been the issues arising from the cache in each processing element. Caching&lt;span style=&quot;line-height: 1.538em;&quot;&gt; shared data introduces a new problem because the view of &lt;/span&gt;&lt;span style=&quot;line-height: 1.538em;&quot;&gt;memory held by two different processors is through their individual caches, &lt;/span&gt;&lt;span style=&quot;line-height: 1.538em;&quot;&gt;which, without any additional precautions, could end up seeing two different values. &lt;/span&gt;&lt;span style=&quot;line-height: 1.538em;&quot;&gt;This difficulty is generally &lt;/span&gt;&lt;span style=&quot;line-height: 1.538em;&quot;&gt;referred to as the: &lt;a href=&quot;/node/89&quot;&gt;The Cache Coherence Problem&lt;/a&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Sat, 27 Apr 2013 16:44:52 +0000</pubDate>
+ <dc:creator>jduarte</dc:creator>
+ <guid isPermaLink="false">40 at http://cmsc411.com</guid>
+ <comments>http://cmsc411.com/multiprocessors/all-about-architectures#comments</comments>
+</item>
+</channel>
+</rss>

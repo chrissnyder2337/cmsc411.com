@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+<!-- Mirrored from cmsc411.com/node/62 by HTTrack Website Copier/3.x [XR&CO'2013], Wed, 23 Dec 2015 20:14:44 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8" />
+<meta about="/memory-hierarchy-and-cache/implementation" property="sioc:num_replies" content="0" datatype="xsd:integer" />
+<link rel="shortcut icon" href="../../sites/all/themes/best_responsive/favicon/index.ico" type="image/vnd.microsoft.icon" />
+<meta content="Implementation" about="/memory-hierarchy-and-cache/implementation" property="dc:title" />
+<link rel="shortlink" href="index.html" />
+<meta name="Generator" content="Drupal 7 (http://drupal.org)" />
+<link rel="canonical" href="../../memory-hierarchy-and-cache/implementation/index.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>Implementation | CMSC411</title>
+<link type="text/css" rel="stylesheet" href="../../sites/default/files/css/css_pbm0lsQQJ7A7WCCIMgxLho6mI_kBNgznNUWmTWcnfoE/index.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../sites/default/files/css/css_n7aK8s-ciXhQyEYWNOJtISbWxtxQiQvnD-N_xWUtD5A/index.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../sites/default/files/css/css_WjkX6t15Lq0xdJZTX8lA7p4jg5vD3TW-XHhIbe9Uwq8/index.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../sites/default/files/css/css_baiEnzu5fQ3rXaCIxkQRgA1_qyhikBe06jPwNnCzNBI/index.css" media="all" />
+<script type="text/javascript" src="../../sites/default/files/js/js_zzcIWOou_jnX0ZWAIA4sb6Xy_p5a8FZNA0GySvuWjPU/index.js"></script>
+<script type="text/javascript" src="../../sites/default/files/js/js_R9UbiVw2xuTUI0GZoaqMDOdX0lrZtgX-ono8RVOUEVc/index.js"></script>
+<script type="text/javascript" src="../../sites/all/modules/lightbox2/js/lightbox/index-389.js?1450901259"></script>
+<script type="text/javascript" src="../../sites/default/files/js/js_XvrGERoZu0ahkS-ONbU3CtcdM8Ig7MTgYdunc3p4-lk/index.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"best_responsive","theme_token":"V2RlGCD8IhQyHIIQjCPaX6J64xejKeKmOoRSi8HmC0E","js":{"sites\/all\/modules\/jquery_update\/replace\/jquery\/1.5\/jquery.min.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/admin_menu\/admin_devel\/admin_devel.js":1,"sites\/all\/modules\/lightbox2\/js\/lightbox.js":1,"sites\/all\/themes\/best_responsive\/js\/uniform.js":1,"sites\/all\/themes\/best_responsive\/js\/superfish.js":1,"sites\/all\/themes\/best_responsive\/js\/initialize.js":1,"sites\/all\/themes\/best_responsive\/js\/responsive.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/comment\/comment.css":1,"sites\/all\/modules\/date\/date_api\/date.css":1,"sites\/all\/modules\/date\/date_popup\/themes\/datepicker.1.7.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/views\/css\/views.css":1,"sites\/all\/modules\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/lightbox2\/css\/lightbox_alt.css":1,"sites\/all\/themes\/best_responsive\/style.css":1,"sites\/all\/themes\/best_responsive\/css\/responsive.css":1}},"lightbox2":{"rtl":0,"file_path":"\/(\\w\\w\/)public:\/","default_image":"\/sites\/all\/modules\/lightbox2\/images\/brokenimage.jpg","border_size":10,"font_color":"000","box_color":"fff","top_position":"","overlay_opacity":"0.8","overlay_color":"000","disable_close_click":1,"resize_sequence":0,"resize_speed":400,"fade_in_speed":400,"slide_down_speed":600,"use_alt_layout":1,"disable_resize":0,"disable_zoom":0,"force_show_nav":0,"show_caption":1,"loop_items":0,"node_link_text":"View Image Details","node_link_target":0,"image_count":"Image !current of !total","video_count":"Video !current of !total","page_count":"Page !current of !total","lite_press_x_close":"press \u003Ca href=\u0022#\u0022 onclick=\u0022hideLightbox(); return FALSE;\u0022\u003E\u003Ckbd\u003Ex\u003C\/kbd\u003E\u003C\/a\u003E to close","download_link_text":"","enable_login":false,"enable_contact":false,"keys_close":"c x 27","keys_previous":"p 37","keys_next":"n 39","keys_zoom":"z","keys_play_pause":"32","display_image_size":"original","image_node_sizes":"()","trigger_lightbox_classes":"","trigger_lightbox_group_classes":"","trigger_slideshow_classes":"","trigger_lightframe_classes":"","trigger_lightframe_group_classes":"","custom_class_handler":0,"custom_trigger_classes":"","disable_for_gallery_lists":true,"disable_for_acidfree_gallery_lists":true,"enable_acidfree_videos":true,"slideshow_interval":5000,"slideshow_automatic_start":true,"slideshow_automatic_exit":true,"show_play_pause":true,"pause_on_next_click":false,"pause_on_previous_click":true,"loop_slides":false,"iframe_width":600,"iframe_height":400,"iframe_border":1,"enable_video":0}});
+//--><!]]>
+</script>
+<!--[if lt IE 9]><script src="/sites/all/themes/best_responsive/js/html5.js"></script><![endif]-->
+</head>
+<body class="html not-front not-logged-in one-sidebar sidebar-first page-node page-node- page-node-62 node-type-page">
+    <div id="wrap" class="clearfix">
+  <div id="header-wrap">
+    <header id="header" class="clearfix">
+      <div id="logo">
+        <div id="site-logo"><a href="../../index/index.html" title="Home">
+          <img src="../../sites/default/files/chip/index.png" alt="Home" />
+        </a></div>        <h1 id="site-name">
+          <a href="../../index/index.html" title="Home"><span>CMSC411</span></a>
+        </h1>
+      </div>
+      <nav id="navigation" role="navigation">
+        <div id="main-menu">
+          <ul class="menu"><li class="first leaf"><a href="../../index/index.html">Home</a></li>
+<li class="expanded active-trail"><a href="../../research-topics/index.html" title="" class="active-trail">Research Topics</a><ul class="menu"><li class="first collapsed"><a href="../../arm-architecture/index.html">ARM Architecture</a></li>
+<li class="collapsed"><a href="../../instruction-set-architectures-action/floating-points/index.html">Floating Points</a></li>
+<li class="collapsed"><a href="../../multiprocessors/ins-and-outs-parallel-processing/index.html">IN&#039;s and Out&#039;s of Parallel Processing</a></li>
+<li class="collapsed"><a href="../../hardware/qualcomm-snapdragon-s4/index.html" title="Analysis">Qualcomm Snapdragon S4</a></li>
+<li class="collapsed"><a href="../../storage-systems/storage-virtualization/index.html">Storage Virtualization</a></li>
+<li class="collapsed"><a href="../../multiprocessors/xeon-introduction/index.html">Xeon</a></li>
+<li class="collapsed"><a href="../../miscellaneous/bitcoin/index.html">Bitcoin</a></li>
+<li class="collapsed"><a href="../../hardware/cpu-overclocking/index.html">CPU Overclocking</a></li>
+<li class="collapsed"><a href="../../cloud-computing/index.html">Cloud Computing</a></li>
+<li class="collapsed"><a href="../../hardware/consumer-components-overclockable-system/index.html">Consumer Components for an Overclockable System</a></li>
+<li class="collapsed"><a href="../../storage-systems/file-systems/index.html">File Systems</a></li>
+<li class="collapsed"><a href="../../gpgpu/gpgpus-cuda-case-study/index.html">GPGPUs: A CUDA case study</a></li>
+<li class="collapsed"><a href="../../hardware-pipelining-techniques-software/gpu-architecture/index.html">GPU Architecture</a></li>
+<li class="collapsed"><a href="../../miscellaneous/google-glass/index.html" title="Google Glass">Google Glass</a></li>
+<li class="leaf"><a href="../../hardware/hardware-wars-exploiting-instruction-level-parallelism-ilp/index.html">Hardware Wars: Exploiting Instruction-Level Parallelism (ILP)</a></li>
+<li class="collapsed"><a href="../../techniques/instruction-level-parallelism/index.html">Instruction Level Parallelism</a></li>
+<li class="collapsed"><a href="../../instruction-set-architectures-action/instruction-set-principles/index.html">Instruction Set Principles</a></li>
+<li class="collapsed"><a href="../../techniques/loop-unrolling/index.html">Loop Unrolling</a></li>
+<li class="collapsed"><a href="../../storage-systems/memory-storage-systems-cloud-flash-and-mobile-architecture/index.html">Memory Storage Systems: Cloud, Flash, and Mobile Architecture</a></li>
+<li class="collapsed"><a href="../../hardware/playstation-3/index.html" title="A history of the PlayStation and the development of the PS3&#039;s Cell hardware architecture, including a comparison with the other third-generation game consoles.">PlayStation 3</a></li>
+<li class="collapsed"><a href="../../hardware/playstation-2/index.html">Playstation 2</a></li>
+<li class="collapsed"><a href="../../miscellaneous/raspberry-pi/index.html">Raspberry Pi Architecture</a></li>
+<li class="collapsed"><a href="../../storage-systems/ssd-vs-hdd/index.html">SSD vs. HDD</a></li>
+<li class="collapsed"><a href="../../computer-design-fundamentals/computer-architectures-von-neumann-vs-harvard/index.html">The Overview</a></li>
+<li class="collapsed"><a href="../../techniques/thread-level-parallelism/index.html" title="Any computer programs being run on a computer has the “code” turned into a lot level assembly language. This new “code” has a behind the scene change different from the original “code”.  The new compiled instruction based “code” has gone through many optimizations, from using pipelining and superscalar architect to using instruction level parallelism. One level of this exploitation is called Thread Level Parallelism (TLP). So what is TLP?">Thread Level Parallelism</a></li>
+<li class="collapsed"><a href="../../software/virtual-machines-overview/index.html">Virtual Machines: An Overview</a></li>
+<li class="expanded active-trail"><a href="../../memory-hierarchy-and-cache/virtual-memory/index.html" class="active-trail">Virtual Memory</a><ul class="menu"><li class="first leaf"><a href="../../memory-hierarchy-and-cache/direct-mapped-memory/index.html">Direct-Mapped Memory</a></li>
+<li class="leaf"><a href="../../memory-hierarchy-and-cache/paging/index.html">Paging</a></li>
+<li class="leaf active-trail"><a href="../../memory-hierarchy-and-cache/implementation/index.html" class="active-trail active-trail active">Implementation</a></li>
+<li class="last leaf"><a href="../../memory-hierarchy-and-cache/resources/index.html">Resources</a></li>
+</ul></li>
+<li class="collapsed"><a href="../../hardware/xbox-one/index.html">Xbox One</a></li>
+<li class="last collapsed"><a href="../../hardware/graphics-processing-units-mobile-devices/index.html">Graphics Processing Units in Mobile Devices</a></li>
+</ul></li>
+<li class="last expanded"><a title="" class="nolink">Study Guide</a><ul class="menu"><li class="first leaf"><a href="../../chapter-summaries/index.html">Chapter Summaries</a></li>
+<li class="leaf"><a href="../../pipeline-timing-charts-code-sequence-tables/index.html">Pipeline Timing Charts &amp; Code Sequence Tables</a></li>
+<li class="leaf"><a href="../../sample-finals/index.html">Sample Finals</a></li>
+<li class="leaf"><a href="../../sample-midterms/index.html">Sample Midterms</a></li>
+<li class="leaf"><a href="../../sample-quizzes/index.html">Sample Quizzes</a></li>
+<li class="last leaf"><a href="../../worksheets/index.html">Worksheets</a></li>
+</ul></li>
+</ul>        </div>
+      </nav>
+    </header>
+  </div>
+
+  <div id="main-content" class="clearfix">
+    
+    
+        <div id="primary" class="container sidebar-bg clearfix">
+      <section id="content" role="main" class="clearfix">
+        <div id="breadcrumbs"><h2 class="element-invisible">You are here</h2><nav class="breadcrumb"><a href="../../index/index.html">Home</a> » <a href="../../research-topics/index.html" title="">Research Topics</a> » <a href="../../memory-hierarchy-and-cache/virtual-memory/index.html">Virtual Memory</a> » Implementation</nav></div>                        <div id="content-wrap">
+                    <h1 class="page-title">Implementation</h1>                                                  <div class="region region-content">
+  <div id="block-system-main" class="block block-system">
+
+      
+  <div class="content">
+                          
+      
+    
+  <div class="content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><p>In this section we will discuss the details of one possible way of implementing a virtual memory system. Remember, however, that this represents only one possible implementation, and the design space is very large.</p>
+<p> </p>
+<h4>Page Tables</h4>
+<p>As stated before, the virtual memory system knows the mappings between the virtual pages and the page frames. In our implementation, it does so using a <strong>page table</strong>, a data structure with an entry for every mapping that the system must keep track of. It should be clear from the previous sections that the number of entries in the page table will be equal to the number of virtual pages. Each page table entry contains information about the mapping, including:</p>
+<ul><li><strong>Valid Bit:</strong> The valid bit is one bit in the entry that specifies whether the virtual page resides in a page frame, or on the backing store. If the valid bit is 1, the virtual page is in memory; if it is 0, the virtual page is on the backing store, and the rest of the data in the page table entry is considered invalid.</li>
+<li><strong>Dirty Bit: </strong>The dirty bit is one bit in the entry that specifies whether the virtual page has been written to since it was brought off the backing store into memory. Use of the dirty bit will be discussed later.</li>
+<li><strong>Page Frame Number:</strong> The page frame number is the number of the physical page to which this virtual page is mapped. This is the data that is used to translate the virtual address into a physical one.</li>
+<li><strong>Other Page Info:</strong> A page table entry also contains other fields, such as page permissions or whether the page is global, which are beyond the scope of this document.</li>
+</ul><p>In some implementations, a page table entry will also contain the number of the virtual page corresponding to the entry. However, this is an expensive method with a simple workaround. If the entries in the page table are ordered sequentially, with the first entry being for page 1, the second for page 2, and so on, then the virtual page number can be used to index into the page table. The virtual page of an entry is now implicitly defined by the position of the entry in the page table.</p>
+<p> </p>
+<p>Now that we have our page table, we can use it whenever we need to do an address translation. Given a virtual address, we first split it into two parts, the page number and the offset. The offset is the <em>n</em> lowest order bits of the address, where <em>n </em>is the number of bits needed to index a whole page (in our case, 4 KiB pages require a 12 bit offset). The page number is the remaining bits of the address. The page number is used to index into the page table and aquire the page frame number. The page frame number is used to find the base of the physical page we need, and then the offset is added to this base to produce the full physical address.</p>
+<p>The astute reader may ask, 'If the page table exists in memory, how do we find the address of the page table without having to use the page table?' The answer is, we don't. Unfortunately, at least some part of memory has to be 'wired down,' or statically allocated for the page table. The page table is placed somewhere in physical memory, and a special register is given the base physical address of the page table. When indexing the page table, we actually add the offset for that index to the contents of this special register to find the entry we want.</p>
+<p> </p>
+<h4>Page Faults</h4>
+<p>In a previous section, we asked what would happen if an access occurred to a virtual page that was not currently in memory. We gave a generic answer, but here we will go into more detail given our implementation.</p>
+<p>When a page fault occurs, a special function is invoked, called the <strong>page fault handler</strong>. It is the job of the page fault handler to set up the memory so that the user process can continue to execute. The first step is to make some space in the physical memory for the page that we need to bring in. The page fault handler looks through the pages currently in memory, and selects one to page out. In selecting which page to evict, we can borrow some algorithms from cache management (in fact, one can view the main memory as effectively being nothing more than a cache for the backing store):</p>
+<ul><li><strong><span class="mw-headline" id="B.C3.A9l.C3.A1dy.27s_Algorithm">Bélády's</span> Oracle:</strong> As in cache management, the optimal algorithm is one that evicts the page that will be used the furthest in the future. However, this algorithm is impossible to achieve in practice, and merely serves as a metric for other, real-world algorithms.</li>
+<li><strong>Least Recently Used (LRU):</strong> LRU dictates that the evicted page should be the one that has not been accessed for the longest time. The performance of this algorithm is fairly good, although it requires a bit of overhead in each page table entry to keep track of what was accessed when.</li>
+<li><strong>Random:</strong> A random algorithm simply chooses a page to evict at random, with no regard to access time. This algorithm trades the performance of LRU for reduced overhead.</li>
+</ul><p> </p>
+<p>In any case, once the page fault handler has selected a page to page out, it looks at the dirty bit of its page table entry. If the dirty bit is set, that means that the page frame has been written to and is inconsistent with the copy on the backing store, so it must be written out to the backing store. However, if the dirty bit is not set, the data in the page frame is identical to the data on the backing store, and we can save ourselves some time by simply throwing away the data in the page frame. Either way, the page frame is now unused, and we update the page table entry for the virtual page that was previously mapped to that page frame to indicate that it is on the backing store.</p>
+<p>Now that we have an empty page frame, we can copy the faulting virtual page off the backing store and into the page frame. Once this is done, we update the page table entry for the faulting virtual page to point to the page frame. Then, we make whatever instruction caused the page fault execute again. From the perspective of the process that caused the page fault, with the exception of a longer run time, nothing unusual has happened!</p>
+<p> </p>
+<h4>Demand Paging</h4>
+<p>So far, we have been making the assumption that as much of a program is read into memory as possible upon start. However, the page fault handler need not only be used when all of memory is full. Instead, we can modify the handler so that first it looks for any page frames that are not currently mapped by a virtual page. If it finds one, we don't have to bother evicting a page that is mapped. The implication of this is that we don't need all of a program in memory to execute it, only the parts that are currently being used. In fact, when the program is first loaded, the only page we have to load into main memory is the virtual page containing the program's starting address (we may also load the page that holds the top of the stack, as the likelihood that the program will use the stack is high). Loading only those virtual pages that we currently need into memory, and allowing ones that we no longer need to be paged out is known as <strong>demand paging</strong>.</p>
+<p> </p>
+<h4>Pageable Page Tables</h4>
+<p>At this point we have a fully-functional virtual memory system. However, the page table represents a significant portion of the overhead. In the case of a system with 32-bit addresses, the maximum addressable memory is 4 GiB. Given that each page table entry covers 4 KiB (the size of a page), we need 2^20 page table entries to cover the entire virtual address space. Assuming that each entry is 4 bytes (a commonly used size), the page table will take up 4 MiB. In addition, similar to how we only need pieces of a program at any given time, we generally need only parts of the page table. The next step is simple: page the page table. We break the page table up into 4 KiB pages, and move it into the virtual memory space. As stated above, at least some portion of memory must be wired down, so we create another page table, the <strong>root page table</strong>. The root page table is similar in structure to the page table we have already discussed, but instead of pointing to page frames, the entries of the root page table point to pieces of the page table. So, during the address translation process, we now break the virtual address into three pieces. Again, the offset is the 12 bytes needed to address a 4 KiB page. However, we now no longer know the location of the page table that contains the mapping for the virtual page we need. To find it, we take the 10 high-order bits (we use 10 bits because the 4 MiB page table, broken up into 4 KiB pages, consists of 1024 (or 2^10) pages) and use them to index into the root page table. The root page table entry tells us where to get the piece of the page table we want. We then use the remaining bits of the virtual address to index into the page table to generate a physical address for the page frame we need. As before, the offset is added to the page frame base address to calculate the final physical address. In this way we have reduced the explicit memory requirement of the virtual memory system from 4 MiB to a single page; only the root page table is wired down, and any pieces of the page table not currently needed can reside on the backing store.</p>
+<p> </p>
+<h4>TLB</h4>
+<p>Another way to improve our virtual memory implementation is the addition of a <strong>Translation Lookaside Buffer (TLB)</strong>. The TLB functions as a cache of recently used virtual addresses. The 'tag' of a TLB entry is the virtual page number, and the data of an entry is the page frame to which that virtual page maps. When a page fault occurs, not only do we bring the virtual page into memory, but we add an entry in the TLB for this mapping (general cache eviction strategies are employed when necessary). In this way, we can often save the trouble of indexing into the page tables to do the address translation, and save some time.</p>
+<p> </p>
+</div></div></div>  </div>
+
+      <footer>
+          </footer>
+  
+    </div>
+  
+</div> <!-- /.block -->
+</div>
+ <!-- /.region -->
+        </div>
+      </section>
+              <aside id="sidebar" role="complementary">
+         <div class="region region-sidebar-first">
+  <div id="block-menu-block-3" class="block block-menu-block">
+
+        <h2 ><span><a href="../../memory-hierarchy-and-cache/virtual-memory/index.html" class="active-trail">Virtual Memory</a></span></h2>
+    
+  <div class="content">
+    <div class="menu-block-wrapper menu-block-3 menu-name-main-menu parent-mlid-0 menu-level-3">
+  <ul class="menu"><li class="first leaf menu-mlid-556"><a href="../../memory-hierarchy-and-cache/direct-mapped-memory/index.html">Direct-Mapped Memory</a></li>
+<li class="leaf menu-mlid-594"><a href="../../memory-hierarchy-and-cache/paging/index.html">Paging</a></li>
+<li class="leaf active-trail active menu-mlid-596"><a href="../../memory-hierarchy-and-cache/implementation/index.html" class="active-trail active">Implementation</a></li>
+<li class="last leaf menu-mlid-665"><a href="../../memory-hierarchy-and-cache/resources/index.html">Resources</a></li>
+</ul></div>
+  </div>
+  
+</div> <!-- /.block -->
+<div id="block-views-teaser-image-block" class="block block-views">
+
+      
+  <div class="content">
+    <div class="view view-teaser-image view-id-teaser_image view-display-id-block view-dom-id-c8845f1cae2f2744ef17c66f7aea8d7f">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <div class="views-field views-field-field-teaser-image centered">        <div class="field-content"></div>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+  
+</div> <!-- /.block -->
+<div id="block-menu-block-2" class="block block-menu-block">
+
+      
+  <div class="content">
+    <div class="menu-block-wrapper menu-block-2 menu-name-main-menu parent-mlid-0 menu-level-3">
+  <ul class="menu"><li class="first leaf menu-mlid-556"><a href="../../memory-hierarchy-and-cache/direct-mapped-memory/index.html">Direct-Mapped Memory</a></li>
+<li class="leaf menu-mlid-594"><a href="../../memory-hierarchy-and-cache/paging/index.html">Paging</a></li>
+<li class="leaf active-trail active menu-mlid-596"><a href="../../memory-hierarchy-and-cache/implementation/index.html" class="active-trail active">Implementation</a></li>
+<li class="last leaf menu-mlid-665"><a href="../../memory-hierarchy-and-cache/resources/index.html">Resources</a></li>
+</ul></div>
+  </div>
+  
+</div> <!-- /.block -->
+<div id="block-views-authors-block" class="block block-views">
+
+        <h2 ><span>Authors</span></h2>
+    
+  <div class="content">
+    <div class="view view-authors view-id-authors view-display-id-block view-dom-id-cd3465779b71f51445705c8670d26b37">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <div class="views-field views-field-field-authors">        <div class="field-content">Michael Wollman</div>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+  
+</div> <!-- /.block -->
+<div id="block-views-content-topics-block" class="block block-views">
+
+        <h2 ><span>Category</span></h2>
+    
+  <div class="content">
+    <div class="view view-content-topics view-id-content_topics view-display-id-block view-dom-id-cb62173f51973270b1257c9d622eaebb">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <div class="views-field views-field-term-node-tid">        <span class="field-content"><div class="item-list"><ul><li class="first last"><a href="../../topics/memory-hierarchy-and-cache/index.html">Memory Hierarchy and Cache</a></li>
+</ul></div></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+  
+</div> <!-- /.block -->
+<div id="block-views-topic-pages-block" class="block block-views">
+
+        <h2 ><span>Related Topics</span></h2>
+    
+  <div class="content">
+    <div class="view view-topic-pages view-id-topic_pages view-display-id-block view-dom-id-557e6e7361a0d1de9182adc786e8dcba">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="../../memory-hierarchy-and-cache/virtual-memory/index.html">Virtual Memory</a></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+  
+</div> <!-- /.block -->
+</div>
+ <!-- /.region -->
+        </aside> 
+          </div>
+
+    <div class="clear"></div>
+  </div>
+
+    <footer id="footer-bottom">
+    <div id="footer-area" class="clearfix">
+              <div id="footer-block-wrap" class="clearfix">
+          <div class="footer-block">
+            <div class="region region-footer-first">
+  <div id="block-block-2" class="block block-block">
+
+        <h2 ><span>Postscript</span></h2>
+    
+  <div class="content">
+    <p>For several of the files available on this website you will need a postscript interpreter. <a href="http://pages.cs.wisc.edu/~ghost/gsview/">GSview</a><a></a> provides this capability for Windows machines, OS/2, DEC Alpha machines, and UNIX/X11 boxes.</p>
+  </div>
+  
+</div> <!-- /.block -->
+</div>
+ <!-- /.region -->
+          </div>                    <div class="footer-block remove-margin">
+            <div class="region region-footer-third">
+  <div id="block-menu-menu-academic-resources" class="block block-menu">
+
+        <h2 ><span>Academic Resources</span></h2>
+    
+  <div class="content">
+    <ul class="menu"><li class="first leaf"><a href="http://www.cs.umd.edu/users/meesh/cmsc411/website/" title="The ">Original CMSC411 Website</a></li>
+<li class="leaf"><a href="http://www.cs.umd.edu/users/meesh/webpages/cmsc311/links/links.html" title="Need to review a 311 concept? Check here first!">311 Technical Links</a></li>
+<li class="last leaf"><a href="https://piazza.com/" title="Class Discussion">Piazza</a></li>
+</ul>  </div>
+  
+</div> <!-- /.block -->
+</div>
+ <!-- /.region -->
+          </div>        </div>
+        <div class="clear"></div>
+            
+      <div class="region region-footer">
+  <div id="block-block-1" class="block block-block">
+
+      
+  <div class="content">
+    <p>This page, all problem sets, and exams linked to it are copyrighted. Use of these pages for the CMSC411 class at the University of Maryland is permitted. Any other use requires the permission of the author (<a href="mailto:meesh@cs.umd.edu">Dr. Michelle Hugue</a>).</p>
+  </div>
+  
+</div> <!-- /.block -->
+</div>
+ <!-- /.region -->
+    </div>
+  </footer>
+  
+  <div id="copyright">
+    Copyright &copy; 2015, <a href="../../index/index.html">CMSC411</a>. Drupal site developed by <a href="http://chrissnyder.org/" target="_blank">Christopher Snyder</a>. Base theme by  <a href="http://www.devsaran.com/" target="_blank">Devsaran</a>
+  </div>
+</div>
+  </body>
+
+<!-- Mirrored from cmsc411.com/node/62 by HTTrack Website Copier/3.x [XR&CO'2013], Wed, 23 Dec 2015 20:14:44 GMT -->
+</html>

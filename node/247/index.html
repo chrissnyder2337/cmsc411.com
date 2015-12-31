@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+<!-- Mirrored from cmsc411.com/node/247 by HTTrack Website Copier/3.x [XR&CO'2013], Wed, 23 Dec 2015 20:05:15 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8" />
+<meta about="/hardware/hardware-wars-exploiting-instruction-level-parallelism-ilp" property="sioc:num_replies" content="0" datatype="xsd:integer" />
+<link rel="shortcut icon" href="../../sites/all/themes/best_responsive/favicon/index.ico" type="image/vnd.microsoft.icon" />
+<meta content="Hardware Wars: Exploiting Instruction-Level Parallelism (ILP)" about="/hardware/hardware-wars-exploiting-instruction-level-parallelism-ilp" property="dc:title" />
+<link rel="shortlink" href="index.html" />
+<meta name="Generator" content="Drupal 7 (http://drupal.org)" />
+<link rel="canonical" href="../../hardware/hardware-wars-exploiting-instruction-level-parallelism-ilp/index.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>Hardware Wars: Exploiting Instruction-Level Parallelism (ILP) | CMSC411</title>
+<link type="text/css" rel="stylesheet" href="../../sites/default/files/css/css_pbm0lsQQJ7A7WCCIMgxLho6mI_kBNgznNUWmTWcnfoE/index.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../sites/default/files/css/css_n7aK8s-ciXhQyEYWNOJtISbWxtxQiQvnD-N_xWUtD5A/index.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../sites/default/files/css/css_WjkX6t15Lq0xdJZTX8lA7p4jg5vD3TW-XHhIbe9Uwq8/index.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../sites/default/files/css/css_baiEnzu5fQ3rXaCIxkQRgA1_qyhikBe06jPwNnCzNBI/index.css" media="all" />
+<script type="text/javascript" src="../../sites/default/files/js/js_zzcIWOou_jnX0ZWAIA4sb6Xy_p5a8FZNA0GySvuWjPU/index.js"></script>
+<script type="text/javascript" src="../../sites/default/files/js/js_R9UbiVw2xuTUI0GZoaqMDOdX0lrZtgX-ono8RVOUEVc/index.js"></script>
+<script type="text/javascript" src="../../sites/all/modules/lightbox2/js/lightbox/index-122.js?1450900308"></script>
+<script type="text/javascript" src="../../sites/default/files/js/js_XvrGERoZu0ahkS-ONbU3CtcdM8Ig7MTgYdunc3p4-lk/index.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"best_responsive","theme_token":"HfUHdCwfm6EQHknF_kuVFSF1np4W1QTmO5M5WDUgC6s","js":{"sites\/all\/modules\/jquery_update\/replace\/jquery\/1.5\/jquery.min.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/admin_menu\/admin_devel\/admin_devel.js":1,"sites\/all\/modules\/lightbox2\/js\/lightbox.js":1,"sites\/all\/themes\/best_responsive\/js\/uniform.js":1,"sites\/all\/themes\/best_responsive\/js\/superfish.js":1,"sites\/all\/themes\/best_responsive\/js\/initialize.js":1,"sites\/all\/themes\/best_responsive\/js\/responsive.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/comment\/comment.css":1,"sites\/all\/modules\/date\/date_api\/date.css":1,"sites\/all\/modules\/date\/date_popup\/themes\/datepicker.1.7.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/views\/css\/views.css":1,"sites\/all\/modules\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/lightbox2\/css\/lightbox_alt.css":1,"sites\/all\/themes\/best_responsive\/style.css":1,"sites\/all\/themes\/best_responsive\/css\/responsive.css":1}},"lightbox2":{"rtl":0,"file_path":"\/(\\w\\w\/)public:\/","default_image":"\/sites\/all\/modules\/lightbox2\/images\/brokenimage.jpg","border_size":10,"font_color":"000","box_color":"fff","top_position":"","overlay_opacity":"0.8","overlay_color":"000","disable_close_click":1,"resize_sequence":0,"resize_speed":400,"fade_in_speed":400,"slide_down_speed":600,"use_alt_layout":1,"disable_resize":0,"disable_zoom":0,"force_show_nav":0,"show_caption":1,"loop_items":0,"node_link_text":"View Image Details","node_link_target":0,"image_count":"Image !current of !total","video_count":"Video !current of !total","page_count":"Page !current of !total","lite_press_x_close":"press \u003Ca href=\u0022#\u0022 onclick=\u0022hideLightbox(); return FALSE;\u0022\u003E\u003Ckbd\u003Ex\u003C\/kbd\u003E\u003C\/a\u003E to close","download_link_text":"","enable_login":false,"enable_contact":false,"keys_close":"c x 27","keys_previous":"p 37","keys_next":"n 39","keys_zoom":"z","keys_play_pause":"32","display_image_size":"original","image_node_sizes":"()","trigger_lightbox_classes":"","trigger_lightbox_group_classes":"","trigger_slideshow_classes":"","trigger_lightframe_classes":"","trigger_lightframe_group_classes":"","custom_class_handler":0,"custom_trigger_classes":"","disable_for_gallery_lists":true,"disable_for_acidfree_gallery_lists":true,"enable_acidfree_videos":true,"slideshow_interval":5000,"slideshow_automatic_start":true,"slideshow_automatic_exit":true,"show_play_pause":true,"pause_on_next_click":false,"pause_on_previous_click":true,"loop_slides":false,"iframe_width":600,"iframe_height":400,"iframe_border":1,"enable_video":0}});
+//--><!]]>
+</script>
+<!--[if lt IE 9]><script src="/sites/all/themes/best_responsive/js/html5.js"></script><![endif]-->
+</head>
+<body class="html not-front not-logged-in one-sidebar sidebar-first page-node page-node- page-node-247 node-type-page">
+    <div id="wrap" class="clearfix">
+  <div id="header-wrap">
+    <header id="header" class="clearfix">
+      <div id="logo">
+        <div id="site-logo"><a href="../../index/index.html" title="Home">
+          <img src="../../sites/default/files/chip/index.png" alt="Home" />
+        </a></div>        <h1 id="site-name">
+          <a href="../../index/index.html" title="Home"><span>CMSC411</span></a>
+        </h1>
+      </div>
+      <nav id="navigation" role="navigation">
+        <div id="main-menu">
+          <ul class="menu"><li class="first leaf"><a href="../../index/index.html">Home</a></li>
+<li class="expanded active-trail"><a href="../../research-topics/index.html" title="" class="active-trail">Research Topics</a><ul class="menu"><li class="first collapsed"><a href="../../arm-architecture/index.html">ARM Architecture</a></li>
+<li class="collapsed"><a href="../../instruction-set-architectures-action/floating-points/index.html">Floating Points</a></li>
+<li class="collapsed"><a href="../../multiprocessors/ins-and-outs-parallel-processing/index.html">IN&#039;s and Out&#039;s of Parallel Processing</a></li>
+<li class="collapsed"><a href="../../hardware/qualcomm-snapdragon-s4/index.html" title="Analysis">Qualcomm Snapdragon S4</a></li>
+<li class="collapsed"><a href="../../storage-systems/storage-virtualization/index.html">Storage Virtualization</a></li>
+<li class="collapsed"><a href="../../multiprocessors/xeon-introduction/index.html">Xeon</a></li>
+<li class="collapsed"><a href="../../miscellaneous/bitcoin/index.html">Bitcoin</a></li>
+<li class="collapsed"><a href="../../hardware/cpu-overclocking/index.html">CPU Overclocking</a></li>
+<li class="collapsed"><a href="../../cloud-computing/index.html">Cloud Computing</a></li>
+<li class="collapsed"><a href="../../hardware/consumer-components-overclockable-system/index.html">Consumer Components for an Overclockable System</a></li>
+<li class="collapsed"><a href="../../storage-systems/file-systems/index.html">File Systems</a></li>
+<li class="collapsed"><a href="../../gpgpu/gpgpus-cuda-case-study/index.html">GPGPUs: A CUDA case study</a></li>
+<li class="collapsed"><a href="../../hardware-pipelining-techniques-software/gpu-architecture/index.html">GPU Architecture</a></li>
+<li class="collapsed"><a href="../../miscellaneous/google-glass/index.html" title="Google Glass">Google Glass</a></li>
+<li class="leaf active-trail"><a href="../../hardware/hardware-wars-exploiting-instruction-level-parallelism-ilp/index.html" class="active-trail active">Hardware Wars: Exploiting Instruction-Level Parallelism (ILP)</a></li>
+<li class="collapsed"><a href="../../techniques/instruction-level-parallelism/index.html">Instruction Level Parallelism</a></li>
+<li class="collapsed"><a href="../../instruction-set-architectures-action/instruction-set-principles/index.html">Instruction Set Principles</a></li>
+<li class="collapsed"><a href="../../techniques/loop-unrolling/index.html">Loop Unrolling</a></li>
+<li class="collapsed"><a href="../../storage-systems/memory-storage-systems-cloud-flash-and-mobile-architecture/index.html">Memory Storage Systems: Cloud, Flash, and Mobile Architecture</a></li>
+<li class="collapsed"><a href="../../hardware/playstation-3/index.html" title="A history of the PlayStation and the development of the PS3&#039;s Cell hardware architecture, including a comparison with the other third-generation game consoles.">PlayStation 3</a></li>
+<li class="collapsed"><a href="../../hardware/playstation-2/index.html">Playstation 2</a></li>
+<li class="collapsed"><a href="../../miscellaneous/raspberry-pi/index.html">Raspberry Pi Architecture</a></li>
+<li class="collapsed"><a href="../../storage-systems/ssd-vs-hdd/index.html">SSD vs. HDD</a></li>
+<li class="collapsed"><a href="../../computer-design-fundamentals/computer-architectures-von-neumann-vs-harvard/index.html">The Overview</a></li>
+<li class="collapsed"><a href="../../techniques/thread-level-parallelism/index.html" title="Any computer programs being run on a computer has the “code” turned into a lot level assembly language. This new “code” has a behind the scene change different from the original “code”.  The new compiled instruction based “code” has gone through many optimizations, from using pipelining and superscalar architect to using instruction level parallelism. One level of this exploitation is called Thread Level Parallelism (TLP). So what is TLP?">Thread Level Parallelism</a></li>
+<li class="collapsed"><a href="../../software/virtual-machines-overview/index.html">Virtual Machines: An Overview</a></li>
+<li class="collapsed"><a href="../../memory-hierarchy-and-cache/virtual-memory/index.html">Virtual Memory</a></li>
+<li class="collapsed"><a href="../../hardware/xbox-one/index.html">Xbox One</a></li>
+<li class="last collapsed"><a href="../../hardware/graphics-processing-units-mobile-devices/index.html">Graphics Processing Units in Mobile Devices</a></li>
+</ul></li>
+<li class="last expanded"><a title="" class="nolink">Study Guide</a><ul class="menu"><li class="first leaf"><a href="../../chapter-summaries/index.html">Chapter Summaries</a></li>
+<li class="leaf"><a href="../../pipeline-timing-charts-code-sequence-tables/index.html">Pipeline Timing Charts &amp; Code Sequence Tables</a></li>
+<li class="leaf"><a href="../../sample-finals/index.html">Sample Finals</a></li>
+<li class="leaf"><a href="../../sample-midterms/index.html">Sample Midterms</a></li>
+<li class="leaf"><a href="../../sample-quizzes/index.html">Sample Quizzes</a></li>
+<li class="last leaf"><a href="../../worksheets/index.html">Worksheets</a></li>
+</ul></li>
+</ul>        </div>
+      </nav>
+    </header>
+  </div>
+
+  <div id="main-content" class="clearfix">
+    
+    
+        <div id="primary" class="container sidebar-bg clearfix">
+      <section id="content" role="main" class="clearfix">
+        <div id="breadcrumbs"><h2 class="element-invisible">You are here</h2><nav class="breadcrumb"><a href="../../index/index.html">Home</a> » <a href="../../research-topics/index.html" title="">Research Topics</a> » Hardware Wars: Exploiting Instruction-Level Parallelism (ILP)</nav></div>                        <div id="content-wrap">
+                    <h1 class="page-title">Hardware Wars: Exploiting Instruction-Level Parallelism (ILP)</h1>                                                  <div class="region region-content">
+  <div id="block-system-main" class="block block-system">
+
+      
+  <div class="content">
+                          
+      
+    
+  <div class="content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><p><span style="font-size:14px;">This image shows IBM 360/91, the first processor to use Tomasulo's Algorithm, making it the fastest processor in 1968.  The study of computer architecture focuses on how computer hardware runs computer software.  The processor plays an important role in computer architecture by managing this interaction:  The processor is computer hardware that carries out the instructions of a computer program.  The goal of this webpage will be to define and discuss features of different processor designs focusing on how each feature improves instruction-level parallelism.  This includes designs that are scalar or superscalar, designs that incorporate Tomasulo's Algorithm, and each will use static branch prediction.</span></p>
+<p><span style="font-size:14px;"><a id="top" name="top">top</a></span></p>
+<p><span style="font-size:14px;"><a href="#introduction">1. introduction</a><br /><a href="#ILP_problems">2. ILP problems</a><br /><a href="#scheduling">3. scheduling</a></span><br /><span style="font-size:14px;"><a href="../static%20scheduling/index.html">    </a><a href="#static_scheduling">3.1 static scheduling</a></span><br /><span style="font-size:14px;"><a href="#dynamic_scheduling">    3.2 dyanmic scheduling</a></span><br /><span style="font-size:14px;"><a href="#issuing">4. issuing</a></span><br /><span style="font-size:14px;"><a href="#single_issue">    4.1 single issue</a></span><br /><span style="font-size:14px;"><a href="#multiple_issue">    4.2 multiple issue</a></span><br /><span style="font-size:14px;"><a href="#branch_prediction">5. branch prediction</a></span><br /><span style="font-size:14px;"><a href="#static_branch_prediction">    5.1 static branch prediction</a></span><br /><span style="font-size:14px;"><a href="#designs">6. Processor Designs</a><br />    <a href="#design_1">6.1 Design 1: Scalar, Static Scheduling, Static branch prediction</a><br />    <a href="#design_2">6.2 Design 2: Scalar, Dynamic Scheduling, Static branch prediction</a><br />  <a href="#design_3">  6.3 Design 3: Superscalar, Dynamic Scheduling, Static branch prediction</a><br /><a href="#exercises">6. exercises</a></span><br /><span style="font-size:14px;"><a href="#references">7. references</a></span></p>
+<hr /><p><span style="font-size:14px;"><a id="introduction" name="introduction"></a></span></p>
+<p> </p>
+<p><strong><span style="font-size:14px;">introduction</span></strong></p>
+<p><span style="font-size:14px;">The study of computer architecture focuses on how computer hardware runs computer software.  The processor plays an important role in computer architecture by managing this interaction:  The processor is computer hardware that carries out the instructions of a computer program.  The goal of this webpage will be to define and discuss features of different parallel processor designs focusing on how each feature improves instruction-level parallelism.  This includes designs that are scalar or superscalar, designs that incorporate Tomasulo's Algorithm, and each will use static branch prediction.</span></p>
+<p><span style="font-size:14px;"><a href="#top">top</a></span></p>
+<hr /><p><a id="ILP_problems" name="ILP_problems"></a></p>
+<p> </p>
+<p><strong><span style="font-size:14px;">ILP problems</span></strong></p>
+<p><span style="font-size:14px;">The performance improvement of the parallel processor over the sequential processor relies on the parallel processor overlapping instruction processing. Not initially obvious, an ideal CPI &lt;= 1 on a parallel processor can only be gauranteed if instructions are independent.  Unfortunately, many issues arise from using ILP because instructions are not always independent.  These problems are not present in a sequential machine because in a sequential machine each instruction is run to completion before the next instruction can be initiated.  In a parallel processor instruction processing overlap during runtime can create dependences which result in hazards if not resolved.  These issues even when resolved often cannot keep the ideal CPI &lt;= 1  reducing the desired performance, but usually still provide an improvement over the sequential processor.  Below lists the dependences and hazards that arise in a parallel processor.</span></p>
+<p><span style="font-size:14px;"><em>dependences -- software</em></span></p>
+<ol><li><span style="font-size:14px;">data dependences: one instruction requires the output from another instruction before it can be completely processed</span></li>
+<li><span style="font-size:14px;">name dependences: two instructions use the same register or memory location, but they do not share data</span>
+<ol><li><span style="font-size:14px;">antidependence: one instruction writes to a register that an earlier instruction reads </span></li>
+<li><span style="font-size:14px;">output dependence: one instruction writes to the same register as another instruction</span></li>
+</ol></li>
+<li><span style="font-size:14px;">control dependences: an instruction who processing is determined by a branch instruction</span></li>
+</ol><p><span style="font-size:14px;"><em>hazards -- hardware</em></span></p>
+<ol><li><span style="font-size:14px;">data hazards: a result of unresolved data dependences</span>
+<ol><li><span style="font-size:14px;">RAW (read after write): data is read before the correct data can be written (unresolved data dependence)</span></li>
+<li><span style="font-size:14px;">WAW (write after write):</span><span style="font-size:14px;"> data is written out of order (unresolved output dependence)</span></li>
+<li><span style="font-size:14px;">WAR (write after read): data is written before the correct data can be read (unresolved antidependence)</span></li>
+</ol></li>
+<li><span style="font-size:14px;">structural hazards: resource contention</span></li>
+<li><span style="font-size:14px;">control hazards: incorrect exeception behavior or data flow (unresolved control dependence)</span></li>
+</ol><p><span style="font-size:14px;"><a href="#top">top</a></span></p>
+<hr /><p><a id="scheduling" name="scheduling"></a></p>
+<p> </p>
+<p><strong><span style="font-size:14px;">scheduling</span></strong></p>
+<p><span style="font-size:14px;">To exploit performance improvements of ILP, s</span><span style="font-size:14px;">cheduling techniques attempt to arrange instructions such that only independent instructions overlap.  Hardware expoits parallelism using dynamic scheduling and software exploits parallelism using static scheduling at compile time.</span></p>
+<p><span style="font-size:14px;"><a href="#top">top</a></span></p>
+<p><span style="font-size:14px;"><a id="static_scheduling" name="static_scheduling"></a></span></p>
+<p> </p>
+<p><span style="font-size:14px;"><strong>static scheduling</strong></span></p>
+<p><span style="font-size:14px;">The pipe-like-pipe processor utilizes static scheduling to improve performance.  In a pipe-like-pipe processor the compiler statically schedules instructions to keep the pipeline full, to avoid hazards without changing dependences, and to minimize stalls. To avoid hazards without a stall the static scheduler separates a dependent instruction from its source instruction by the pipeline clock cycle latency of that source instruction.  Strong static scheduling relies on the percentage of instructions that can be overlapped without potential hazards and the functional unit latencies.  Static scheduling that implements branch delay slot and loop unrolling resolve some hazards caused by branches.</span></p>
+<p><em><span style="font-size:14px;">branch delay slot</span></em><span style="font-size:14px;"> puts an instruction following a branch instruction to provide enough time for the evaluation of the branch instruction.  This prevents control hazards at runtime.  This scheme is limited by instructions put into the delay slot and predicting branch direction at compile time.</span></p>
+<p><em><span style="font-size:14px;">loop unrolling</span></em> <span style="font-size:14px;">converts loop level parallelism into instruction level parallelism statically by the compiler.  More than one iteration of  branch can be scheduled together to eliminate hazards.  This scheme is more instructions and needs more registers.</span></p>
+<p><span style="font-size:14px;"><a href="#top">top</a></span></p>
+<p><span style="font-size:14px;"><a id="dynamic_scheduling" name="dynamic_scheduling"></a></span></p>
+<p> </p>
+<p><strong><span style="font-size:14px;">dynamic scheduling</span></strong></p>
+<p><span style="font-size:14px;">Dynamic scheduling performs better and therefore replaced pipe-like-pipe architecture.  Dynamic scheduling allows out-of-order execution that occurs during runtime by the hardware.  Tomosulo's Algorithm is a dynamic scheduling algorithm that was first used in the IBM 360/91.</span>  <span style="font-size:14px;">Resolves name dependences using register renaming and resolves true data dependences by waiting for operands before entering a functional unit.</span></p>
+<p><img alt="" src="https://docs.google.com/document/d/134JGjC5mdd_laBAquPKYqrKg2fmZPYjNDJGILZp4o1g/pubimage?id=134JGjC5mdd_laBAquPKYqrKg2fmZPYjNDJGILZp4o1g&amp;image_id=1RfRF4JUGTu-ixGqXeETQ6-tLOa7w0M6lvOoCCA" /></p>
+<p> </p>
+<p><span style="font-size:14px;">Basic Tomosulo algorithm consists of three stages</span></p>
+<ol><li><span style="font-size:14px;">Issue:  The issue stage gets an instruction from the instruction queue and puts it into an empty slot in its corresponding reservation station with any operands currently in the registers.  Then waits in the reservation station for all operands not in registers.</span></li>
+<li><span style="font-size:14px;">Execute: performs the operation indicated by the instruction</span></li>
+<li><span style="font-size:14px;">Write Result: output is written to the common data bus (CDB) to be sent to registers and waiting reservation stations</span></li>
+</ol><p><span style="font-size:14px;">This scheme provides many benefits to older schemes.  Tomosulo's Algorithm resolves name dependences using register renaming provided by the reservation statitions including output dependences and antidependences thus eliminating WAW and WAR hazards using register <em>register renaming</em></span>.  <span style="font-size:14px;">Dynamically scheduling instructions helps eliminate many of the stalls required in the pipe-like-pipe.</span></p>
+<p><span style="font-size:14px;"><a href="#top">top</a></span></p>
+<hr /><p><span style="font-size:14px;"><a id="issuing" name="issuing"></a></span></p>
+<p> </p>
+<p><span style="font-size:14px;"><strong>issuing</strong></span></p>
+<p><span style="font-size:14px;">Issuing describes the number of instructions that can be issued in a clock cycle.  The goal of processor designs is to issue many instructions each clock cycle.  This is restricted by dependences in the software and hazards in the hardware.  Issuing is either scalar, single issue, or superscalar, multiple issue.</span></p>
+<p><span style="font-size:14px;"><a href="#top">top</a></span></p>
+<p><span style="font-size:14px;"><a id="single_issue" name="single_issue"></a></span></p>
+<p> </p>
+<p><span style="font-size:14px;"><strong>single issue (scalar) </strong></span></p>
+<p><span style="font-size:14px;">ideal CPI = 1 complete one instruction per clock cycle</span><br /><span style="font-size:14px;">Scalar processing is the goal of the pipe-like-pipe, often prevented by dependences, but scalar is more easily achieved on a dynamic scheduler where an ideal CPI &lt; 1.</span></p>
+<p><span style="font-size:14px;"><a href="#top">top</a></span></p>
+<p><span style="font-size:14px;"><a id="multiple_issue" name="multiple_issue"></a></span></p>
+<p> </p>
+<p><span style="font-size:14px;"><strong>multiple issue (superscalar) </strong></span></p>
+<p><span style="font-size:14px;">ideal CPI &lt; 1</span><br /><span style="font-size:14px;">superscalar processor issue multiple instructions per clock cycle.  This involve more hardware, but provides improvements to performance.  Superscalar can be implemented on static schedulers and dynamic schedulers.  VLIW is a static scheduler that accomplishes multiple issue by packaging multiple instructions into a large instruction.  A superscalar processor implementing Tomasulo's algorithm fills a window with independent instructions that can be run in parallel absent of hazards. </span></p>
+<p> </p>
+<p><span style="font-size:14px;"><a href="#top">top</a></span></p>
+<hr /><p><span style="font-size:14px;"><a id="branch_prediction" name="branch_prediction"></a></span></p>
+<p> </p>
+<p><span style="font-size:14px;"><strong>branch prediction</strong></span></p>
+<p><span style="font-size:14px;">Control hazards can reduce performance.  Branch prediction schemes were designed to reduce branch penalties. Branch prediction schemes use different strategies to accurately predicts when a branch should and should not be taken.  Static branch predicition schemes are basic schemes that happen at compile time.  Dynamic branch prediction schemes involve more complex decision making scheme to improve the performance.  Static branch prediction schemes are the focus and see exercise to learn more about dynamic branch prediction schemes.</span></p>
+<p><span style="font-size:14px;"><a href="#top">top</a></span></p>
+<p><span style="font-size:14px;"><a id="static_branch_prediction" name="static_branch_prediction"></a></span></p>
+<p> </p>
+<p><span style="font-size:14px;"><strong>static branch prediction</strong></span></p>
+<p><span style="font-size:14px;">S</span><span style="font-size:14px;">tatic branch prediction occurs during compile time.  These static branch prediction schemes include predict taken, untaken or branch predictions based on behaviors observed in previous runs of the branch instruction.  Resolving mispredictions requires flushing the pipeline.  These schemes tend to be inaccurate providing many mispredictions.  This led to dynamic branch prediction schemes (See exercise).</span></p>
+<p><span style="font-size:14px;"><a href="#top">top</a></span></p>
+<hr /><p><a id="designs" name="designs"></a></p>
+<p> </p>
+<p><strong><span style="font-size:14px;">Processor Designs</span></strong></p>
+<p><span style="font-size:14px;">Different combinations of processor feature can provide improvements to the processor.  Over time the goal has been to find the right combination of features to maximize performance.  The following designs show how the processor design has changed and improved over time.  A fourth design can be explored further in the exercise.</span></p>
+<p><span style="font-size:14px;"><a href="#top">top</a></span></p>
+<p><a id="design_1" name="design_1"></a></p>
+<p> </p>
+<p><strong><span style="font-size:14px;">Design 1: Scalar, Static Scheduling, Static branch prediction</span></strong></p>
+<p><span style="font-size:14px;">This first design is the most basic and earliest implemented design.  It presents many of the initial problems associated with parallel processing and generated solutions such as forwarding and stalling to prevent hazards caused by dependences.  Unfortunately, this design is not able to eliminate a significant enough number of stalls</span>,<span style="font-size:14px;"> so dynamic strategies were enlisted.</span></p>
+<p><span style="font-size:14px;"><a href="#top">top</a></span></p>
+<p><a id="design_2" name="design_2"></a></p>
+<p> </p>
+<p><strong><span style="font-size:14px;">Design 2: Scalar, Dynamic Scheduling, Static branch prediction</span></strong></p>
+<p><span style="font-size:14px;">This design uses a basic implementation of Tomasulo's algorithm that handles many of the problems that came from the pipe-like-pipe and handles dependences better.  Here the only change is in the scheduling, which replaces the processor hardware to allow for out-of-order execution dynamically.  This eliminates stalls that were unnecessary in a pipe-like-pipe.  Further improvements can be made to improve this scheme.</span></p>
+<p><span style="font-size:14px;"><a href="#top">top</a></span></p>
+<p><a id="design_3" name="design_3"></a></p>
+<p> </p>
+<p><strong><span style="font-size:14px;">Design 3: Superscalar, Dynamic Scheduling, Static branch prediction</span></strong></p>
+<p><span style="font-size:14px;">This third design improves performance over the first two designs because multiple instructions can be issued in one clock cycle and dynamic scheduling allows for efficient handling of dependences.  The only weakness here is the static branch prediction which can have a negative impact on performance.  The final design explored in the excercise implements dynamic branch prediction which is the last piece to improve performance beyond all three of these designs.</span></p>
+<p><span style="font-size:14px;"><a href="#top">top</a></span></p>
+<hr /><p><span style="font-size:14px;"><a id="exercises" name="exercises"></a></span></p>
+<p> </p>
+<p><span style="font-size:14px;"><strong>exercise</strong></span></p>
+<p>Static branch prediction schemes do not provide strong accuracy or high performance.  Limitations on static branch prediction led to the development of dyanmic branch predictions or speculative schemes, which resolved some of these problems.  Describe the behavior of dynamic branch prediction schemes including Branch Prediction Buffer (BPB), Branch Target Buffer (BTB) and Branch Folding Buffer (BFB).  Then compare and contrast a superscalar processor that uses dynamic scheduling and dynamic branch prediction (Superscalar Speculative Tomasulo (SST)) to some of the other processor designs discussed.  Does this design improve upon some of the older designs? Explain why or why not.</p>
+<p><span style="font-size:14px;"><a href="#top">top</a></span></p>
+<hr /><p><span style="font-size:14px;"><a id="references" name="references"></a></span></p>
+<p> </p>
+<p><span style="font-size:14px;"><strong>references</strong></span></p>
+<p><span style="font-size:14px;"><cite>John L. Hennessy, J. L., Patterson, D. A. (2007) <em>Computer Architecture A Quantitative Approach</em> (4th ed.). San Francisco, CA: Elsevier, Inc.</cite></span></p>
+<p><span style="font-size:14px;">Epic Cheat Sheet<br /><a href="https://docs.google.com/document/d/134JGjC5mdd_laBAquPKYqrKg2fmZPYjNDJGILZp4o1g/pub">https://docs.google.com/document/d/134JGjC5mdd_laBAquPKYqrKg2fmZPYjNDJGI...</a></span></p>
+<p><span style="font-size:14px;">image of IBM 360/91<br /><a href="http://people.tribe.net/smbeachbear/photos/4bc9e912-0553-43ea-91ee-0bedb7cdf2ca">http://people.tribe.net/smbeachbear/photos/4bc9e912-0553-43ea-91ee-0bedb...</a></span></p>
+<p><span style="font-size:14px;"><a href="#top">top</a></span></p>
+<p> </p>
+<p> </p>
+</div></div></div><div class="field field-name-field-attachment field-type-file field-label-above"><div class="field-label">Attachment(s):&nbsp;</div><div class="field-items"><div class="field-item even"><span class="file"><img class="file-icon" alt="" title="application/pdf" src="../../modules/file/icons/application-pdf/index.png" /> <a href="../../sites/default/files/files/tomasulo_paper/index.pdf" type="application/pdf; length=782365" title="tomasulo_paper.pdf">An Efficient Algorithm for Exploiting Multiple Arithmetic Units by R.M. Tomasulo</a></span></div></div></div>  </div>
+
+      <footer>
+          </footer>
+  
+    </div>
+  
+</div> <!-- /.block -->
+</div>
+ <!-- /.region -->
+        </div>
+      </section>
+              <aside id="sidebar" role="complementary">
+         <div class="region region-sidebar-first">
+  <div id="block-views-teaser-image-block" class="block block-views">
+
+      
+  <div class="content">
+    <div class="view view-teaser-image view-id-teaser_image view-display-id-block view-dom-id-ba3cda62d5ca387d88d7930559536bf3">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <div class="views-field views-field-field-teaser-image centered">        <div class="field-content"><a href="../../sites/default/files/styles/large/public/IBM360_91/index.jpg" rel="lightbox[field_teaser_image][]" title=""><img typeof="foaf:Image" src="../../sites/default/files/styles/medium/public/IBM360_91/index.jpg" width="220" height="152" alt="" /></a></div>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+  
+</div> <!-- /.block -->
+<div id="block-views-authors-block" class="block block-views">
+
+        <h2 ><span>Authors</span></h2>
+    
+  <div class="content">
+    <div class="view view-authors view-id-authors view-display-id-block view-dom-id-6a2cf0f5927048a0a15db8f7ff982376">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <div class="views-field views-field-field-authors">        <div class="field-content">Anne Logie</div>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+  
+</div> <!-- /.block -->
+<div id="block-views-content-topics-block" class="block block-views">
+
+        <h2 ><span>Category</span></h2>
+    
+  <div class="content">
+    <div class="view view-content-topics view-id-content_topics view-display-id-block view-dom-id-f0c53034663bb9b2aa9a3959f6c189bf">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <div class="views-field views-field-term-node-tid">        <span class="field-content"><div class="item-list"><ul><li class="first last"><a href="../../topics/hardware/index.html">Hardware</a></li>
+</ul></div></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+  
+</div> <!-- /.block -->
+<div id="block-views-topic-pages-block" class="block block-views">
+
+        <h2 ><span>Related Topics</span></h2>
+    
+  <div class="content">
+    <div class="view view-topic-pages view-id-topic_pages view-display-id-block view-dom-id-1a631137fd7c78208b453b6df89542e8">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="../../hardware/qualcomm-snapdragon-s4/index.html">Qualcomm Snapdragon S4</a></span>  </div>  </div>
+  <div class="views-row views-row-2 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="../../hardware-pipelining-techniques-software/gpu-architecture/index.html">GPU Architecture</a></span>  </div>  </div>
+  <div class="views-row views-row-3 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="../../hardware/playstation-3/index.html">PlayStation 3</a></span>  </div>  </div>
+  <div class="views-row views-row-4 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="../../hardware/playstation-2/index.html">Playstation 2</a></span>  </div>  </div>
+  <div class="views-row views-row-5 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="../../hardware/graphics-processing-units-mobile-devices/index.html">Graphics Processing Units in Mobile Devices</a></span>  </div>  </div>
+  <div class="views-row views-row-6 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="../../hardware/consumer-components-overclockable-system/index.html">Consumer Components for an Overclockable System</a></span>  </div>  </div>
+  <div class="views-row views-row-7 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="../../hardware/cpu-overclocking/index.html">CPU Overclocking</a></span>  </div>  </div>
+  <div class="views-row views-row-8 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="../../hardware/xbox-one/index.html">Xbox One</a></span>  </div>  </div>
+  <div class="views-row views-row-9 views-row-odd views-row-last">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="../../hardware/hardware-wars-exploiting-instruction-level-parallelism-ilp/index.html" class="active">Hardware Wars: Exploiting Instruction-Level Parallelism (ILP)</a></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+  
+</div> <!-- /.block -->
+</div>
+ <!-- /.region -->
+        </aside> 
+          </div>
+
+    <div class="clear"></div>
+  </div>
+
+    <footer id="footer-bottom">
+    <div id="footer-area" class="clearfix">
+              <div id="footer-block-wrap" class="clearfix">
+          <div class="footer-block">
+            <div class="region region-footer-first">
+  <div id="block-block-2" class="block block-block">
+
+        <h2 ><span>Postscript</span></h2>
+    
+  <div class="content">
+    <p>For several of the files available on this website you will need a postscript interpreter. <a href="http://pages.cs.wisc.edu/~ghost/gsview/">GSview</a><a></a> provides this capability for Windows machines, OS/2, DEC Alpha machines, and UNIX/X11 boxes.</p>
+  </div>
+  
+</div> <!-- /.block -->
+</div>
+ <!-- /.region -->
+          </div>                    <div class="footer-block remove-margin">
+            <div class="region region-footer-third">
+  <div id="block-menu-menu-academic-resources" class="block block-menu">
+
+        <h2 ><span>Academic Resources</span></h2>
+    
+  <div class="content">
+    <ul class="menu"><li class="first leaf"><a href="http://www.cs.umd.edu/users/meesh/cmsc411/website/" title="The ">Original CMSC411 Website</a></li>
+<li class="leaf"><a href="http://www.cs.umd.edu/users/meesh/webpages/cmsc311/links/links.html" title="Need to review a 311 concept? Check here first!">311 Technical Links</a></li>
+<li class="last leaf"><a href="https://piazza.com/" title="Class Discussion">Piazza</a></li>
+</ul>  </div>
+  
+</div> <!-- /.block -->
+</div>
+ <!-- /.region -->
+          </div>        </div>
+        <div class="clear"></div>
+            
+      <div class="region region-footer">
+  <div id="block-block-1" class="block block-block">
+
+      
+  <div class="content">
+    <p>This page, all problem sets, and exams linked to it are copyrighted. Use of these pages for the CMSC411 class at the University of Maryland is permitted. Any other use requires the permission of the author (<a href="mailto:meesh@cs.umd.edu">Dr. Michelle Hugue</a>).</p>
+  </div>
+  
+</div> <!-- /.block -->
+</div>
+ <!-- /.region -->
+    </div>
+  </footer>
+  
+  <div id="copyright">
+    Copyright &copy; 2015, <a href="../../index/index.html">CMSC411</a>. Drupal site developed by <a href="http://chrissnyder.org/" target="_blank">Christopher Snyder</a>. Base theme by  <a href="http://www.devsaran.com/" target="_blank">Devsaran</a>
+  </div>
+</div>
+  </body>
+
+<!-- Mirrored from cmsc411.com/node/247 by HTTrack Website Copier/3.x [XR&CO'2013], Wed, 23 Dec 2015 20:05:17 GMT -->
+</html>

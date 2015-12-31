@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xml:base="http://cmsc411.com"  xmlns:dc="http://purl.org/dc/elements/1.1/">
+<channel>
+ <title>CMSC411 - GPGPU</title>
+ <link>http://cmsc411.com/topics/gpgpu</link>
+ <description></description>
+ <language>en</language>
+<item>
+ <title>Applications</title>
+ <link>http://cmsc411.com/gpgpu/applications</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt;So the question now is what can we actually do with this technology. For some inspiration, here are some of the things we&#039;ve been using it for right now&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;http://achrisfling.com/games/files/2010/12/MirrorsEdge-2010-12-23-12-27-12-82.png&quot; style=&quot;width: 450px; height: 253px;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-size:20px;&quot;&gt;&lt;strong&gt;Physics Simulations (PhysX)&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;PhysX is Nvidia&#039;s CUDA-driven physics engine. Using the massive paralellization that CUDA offers, game programmers are able to render complex physical effects effectively and efficiently. Above is an example of the dynamic glass shattering effect present in Mirror&#039;s Edge. The various shards are calculated on the fly alongside the calculations for the rest of the game&#039;s display. &lt;/p&gt;
+&lt;p&gt;As most games are organized into time-steps, they work very well for a distributed physics engine which can calculate point forces at hundreds if not thousands of locations in a second and then in the next tick readjust based&lt;/p&gt;
+&lt;div&gt;&lt;span style=&quot;font-size:20px;&quot;&gt;&lt;strong&gt;Signal Processing&lt;/strong&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;div&gt;There are dozens of immediately available libraries dedicated to Fast Fourier Transforms, Numerical Analysis, and more listed on Nvidia&#039;s &lt;a href=&quot;https://developer.nvidia.com/gpu-accelerated-libraries&quot;&gt;gpu-assisted libraries page&lt;/a&gt;. MATLAB has also begun using GPGPU processing to effectively perform certain computations.&lt;/div&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;div&gt;CUDA also has amazing applications for high-speed video and audio encoding. Even on modern multi-core systems the encoding process for a 720p movie is still almost as long as the movie itself. CUDA technology could easily slash that time.&lt;/div&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;div&gt;&lt;span style=&quot;font-size:20px;&quot;&gt;&lt;strong&gt;Algorithms work&lt;/strong&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;div&gt;There are a number of algorithms that behave similarly to physics simulations in that they depend on distributed calculations occuring in unison. Many clustering algorihms are variants of this, with local points contributing to each others effective values and eventually calculating a complete result. Neural networks may also easily make use of this technology. &lt;/div&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;div&gt;&lt;span style=&quot;font-size:20px;&quot;&gt;&lt;strong&gt;Brute Force&lt;/strong&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;div&gt;And finally, with the ability to flatten execution time CUDA and other GPGPU libraries have obvious implications for brute force functions including, for example, password cracking. &lt;/div&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;div&gt;&lt;span style=&quot;font-size:20px;&quot;&gt;&lt;strong&gt;And More&lt;/strong&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;div&gt;There are many other applications for this technology (like DNA sequencing, for instance) but we felt these were some illustrative examples of the kinds of things that could be calculated with GPGPU technology that are currently hard problems when using CPUs. We look forward to the future of what this technology may bring.&lt;/div&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Mon, 20 May 2013 12:31:12 +0000</pubDate>
+ <dc:creator>paarth</dc:creator>
+ <guid isPermaLink="false">182 at http://cmsc411.com</guid>
+ <comments>http://cmsc411.com/gpgpu/applications#comments</comments>
+</item>
+<item>
+ <title>Disadvantages and Limitations</title>
+ <link>http://cmsc411.com/gpgpu/disadvantages-and-limitations</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt;&lt;span style=&quot;font-size:20px;&quot;&gt;&lt;strong&gt;Memory Throughput&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;As we just saw in the chart in the last section, theoretical memory bandwidth has been steadily and consistently increasing. However, that does not mean that it is enough for all of our needs. In some of the more taxing games of today large-scale texture maps still result in there being a bottleneck in memory bandwidth. Skyrim, with its beautiful expansive (not to mention high-definition) environments, is one such game that causes these bottlenecks. If a game can cause such a bottleneck without meaning to, then how must it be when real life applications are using these seem texture manipulation tools to perform calculations over significantly larger data sets? This is a concern that should be carefully observed.&lt;/p&gt;
+&lt;p&gt;While the overall rate has been steadily increasing, in some lines of cards the individual memory bandwidth has actually decreased! The GTX 660 Ti, a fantastic modern card by most accounts, still loses to the GTX 285 in texture processing power because of the 285s greater memory bandwidth even though the card is four years older than the 660 Ti.&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-size:20px;&quot;&gt;&lt;strong&gt;Flow Control&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The GPU sacrifices flow control capabilities for its massively paralellized processing. While normal CPUs have a large cache and some control logic functions on the chip. GPUs just have more ALUs and short-term caches. Here is a visualization of the difference between the two:&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;http://docs.nvidia.com/cuda/cuda-c-programming-guide/graphics/gpu-devotes-more-transistors-to-data-processing.png&quot; style=&quot;width: 431px; height: 140px;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;As you can see, the control structures and the large cache on the GPU are absolutely miniscule compared to those same elements in the CPU. &lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-size:20px;&quot;&gt;&lt;strong&gt;Algorithmic limitations&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Unfortunately some algorithms cannot be easily written to be performed in a distributed manner. Some loops cannot be unrolled, and some threads cannot be easily synchronized. As exciting as GPGPU is, it will offer no benefit here. The CPU will remaind the superior machine for algorithms which cannot take advantage of the paralellization opportunities that GPGPUs offer.&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Mon, 20 May 2013 12:30:24 +0000</pubDate>
+ <dc:creator>paarth</dc:creator>
+ <guid isPermaLink="false">181 at http://cmsc411.com</guid>
+ <comments>http://cmsc411.com/gpgpu/disadvantages-and-limitations#comments</comments>
+</item>
+<item>
+ <title>Advantages</title>
+ <link>http://cmsc411.com/gpgpu/advantages</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt;&lt;span style=&quot;font-size:20px;&quot;&gt;Huge GFLOPS Boost&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;http://docs.nvidia.com/cuda/cuda-c-programming-guide/graphics/floating-point-operations-per-second.png&quot; style=&quot;width: 495px; height: 390px;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;The raw floating point calculation of modern CUDA-enabled cards far outstrips those of modern CPUs. The 8800 GTX was released over six years ago and it &lt;em&gt;still&lt;/em&gt; puts a modern CPU to shame. It&#039;s clear that the opportunity offered by these cards is nothing to scoff at. &lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-size:20px;&quot;&gt;Simpler Architecture&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;One of the major lessons of the CMSC411 book is that cost should always be a factor in considering any changes being made to any systems. Cost is an excellent point in favor of GPGPUs. A single GPU adds a remarkable amount of processing power to a machine. More importantly, one can easily add multiple GPUs to a single system. The technology for this has long been supported thorugh SLI and Cross-fire. 3-way SLI has been a reality for half a decade. It is also possible to link together two dual-layer cards (like the GTX 295), producing 4 GPUs doing work at any one time. Power restrictions and motherboard design do come into play after a certain point, but adding another GPU remains far more practical than adding another CPU. &lt;/p&gt;
+&lt;p&gt;To add another CPU to a system, the entire computer needs to be rebuilt from the ground up to have a motherboard that supports two distinct cores. This motherboard has to pass tests to make sure that it complies with all other motherboard functions as well. There are no options for expansion. Even If a computer would benefit from another CPU, there is no way to give it one. The only option is to buy a new computer, which is prohibitively expensive especially compared to the cost of purchasing a GPU.&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-size:20px;&quot;&gt;The End of Clustering&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-size:20px;&quot;&gt;&lt;span style=&quot;font-size:14px;&quot;&gt;Distributed computing is a growing and worthwhile field. However, operations which can be performed using Nvidia GPUs and CUDA will not suffer from the network latency associated with multiple computers networked together. The system bus is very likely faster than the network interface. &lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Here is a graph showing the memory throughput for graphics cards over time&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;http://docs.nvidia.com/cuda/cuda-c-programming-guide/graphics/memory-bandwidth.png&quot; style=&quot;width: 438px; height: 360px;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;It&#039;s important to note that this graph only shows Nviia&#039;s flagship products from each line. There are other cards that have a lower memory speed, even though thay are newer (For example the GTX 660 Ti has a smaller memory bus than the GTX 285 of four years ago). &lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Mon, 20 May 2013 12:28:46 +0000</pubDate>
+ <dc:creator>paarth</dc:creator>
+ <guid isPermaLink="false">180 at http://cmsc411.com</guid>
+ <comments>http://cmsc411.com/gpgpu/advantages#comments</comments>
+</item>
+<item>
+ <title>Structure</title>
+ <link>http://cmsc411.com/gpgpu/structure</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt;&lt;span style=&quot;font-size:20px;&quot;&gt;&lt;strong&gt;Single Input Multiple Dataset (SIMD)&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;CUDA is an SIMD architecture. There is a single program being run across multiple cores of the graphics card at once. Each core simply has different data that it is processing. How this works  at the software level is that for each intended use of CUDA, a &lt;strong&gt;kernel&lt;/strong&gt; function is provided. This function is then run hundreds of times across the different cores in a massively paralellized effort. &lt;/p&gt;
+&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;http://www.biomedcentral.com/content/figures/1471-2105-8-474-3.jpg&quot; style=&quot;width: 450px; height: 322px;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;There are currently available GPUs which allow multiple kernels to be run simultaneously. This began with the Nvidia&#039;s Fermi architecture first seen on the GeForce GTX 480.&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;That is, in essence, the core of CUDA. The uses are immediately visible, as are some of the concerns of such a system. While we do gain an immense amount of what is essentially flattening vertical computation time to horizontal, simultaneous execution, we also separate the process away from the typical flow of the datastream introducing some more latency due to the memory operations involved in moving data from one memory store to another.&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;span style=&quot;font-size:20px;&quot;&gt;CUDA-specific GPUs&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;There has been a concerted effort over the past few years to allow the GeForce line to handle CUDA functions more appropriately. Unfortunately the GeForce line&#039;s primary purpose as a gaming platform cannot be ignored in this case. A gaming GPU and a GPU intended specifically for CUDA and GPGPU activities have differing requirements. Gaming GPUs, for example, have very little available memory in comparison to major systems. As of this writing it is common for GPUs to support 2GB of memory, perhaps 3GB in higher end cards. Gaming specific GPUs must also dedicate themselves to efficiently handlilng the graphics pipeline and in doing so they overfit their hardware to the problem, making it less efficient for other purposes. Finally, marketing concerns weigh far more heavily on gaming hardware which leads to certain interesting design decisions such as intentionally putting 2GB of memory on a card when 3GB would have been easier and would have instated a symmetric memory structure. That structure would have allowed for easier caching decisions on the part of the controller and resulted in a more effective card, but they needed a new price point so they used an intentionally stripped down card.&lt;/p&gt;
+&lt;p&gt;Gaming GPUs are plagued with these problems and more. They are fantastic pieces of hardware, but they have too many other pressures to make them amazingly effective as GPGPU cards. To that end, the Quadro and Tesla lines were released. Quadro graphics cards are intended for workstations which will be doing more CAD work and large scale image processing than texture mapping and lighting, meaning that those specific parts of the cards no longer need to be a priority. The Tesla line of cards is intended entirely for calculation and so can scrap the components dedicated to the display. Tesla cards don&#039;t even have a port to connect a monitor to.&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Mon, 20 May 2013 12:27:51 +0000</pubDate>
+ <dc:creator>paarth</dc:creator>
+ <guid isPermaLink="false">179 at http://cmsc411.com</guid>
+ <comments>http://cmsc411.com/gpgpu/structure#comments</comments>
+</item>
+<item>
+ <title>Overview</title>
+ <link>http://cmsc411.com/gpgpu/overview</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt; &lt;/p&gt;
+&lt;div&gt;Graphics Processing Units (GPUs) and Central Processing Units (CPUs) have often been compared to one another, and not without reason. Their similarities are immediately apparent to many computer users. Both components have processors often with multiple cores, caches, internal buses, registers, ALUs, and more. They both are excellent number crunchers and are very significant in enthusiast-class computing.&lt;/div&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;div&gt;However, that does not mean that GPUs and CPUs are not without their differences. CPUs are general purpose machines while GPUs are specifically dedicated to being able to process many similar operations in parallel, allowing them to render a screen very quickly in comparison to a CPU. However, until recently GPUs were specifically locked into that functionality. They were only able to be used for advanced graphics acceleration. However, advances in GPU technology have allowed for graphics cards to now perform many other functions through the use of intermedia layers such as CUDA, OpenCL, or others. That being said, there were specific tricks that could take advantage of the GPU&#039;s rendering capability to perform computations (light maps, picking using the z-buffer, etc.) but when it came down to it these were tricks and could not be extended to general purpose computing until CUDA and friends allowed for it. These frameworks provide bindings for languages which are able to interface with them. Programmers can use these bindings to take advantage of massively parallelized computing power that was up to this point unavilable. In this article, we will be focusing intensely on CUDA.&lt;/div&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;div&gt;&lt;span style=&quot;font-size:16px;&quot;&gt;&lt;strong&gt;Why did we choose CUDA?&lt;/strong&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;div&gt;While there are several technologies available that satisfy this need CUDA produced by nVidia is by far the most commonly used. OpenCL is its closest competitor, originally funded by Apple Inc. and now controlled by the Khronos Group. CUDA technology has also been adopted in the games industry thruogh the use of the PhysX game physics engine while OpenCL has remained largely unknown. While OpenCL does potentially support more devices in that it is an open standard and works on both ATI/AMD cards along with nVidia cards, the majority of the graphics cards on the market that are interested in GPGPU are nVidia products. nVidia also has produced a specific line of graphics cards (the Tesla line) that are intended solely for GPGPU computing and not video game graphics. ATI has had historically poor driver support for its products and while the purchasing of the company by AMD has improved the status of its drivers their capabilities still fall short of nVidia&#039;s consistent development. All signs point to nVidia being the most stable and progressive supporter of the GPGPU movement with CUDA as its flagship product. &lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Mon, 20 May 2013 12:21:27 +0000</pubDate>
+ <dc:creator>paarth</dc:creator>
+ <guid isPermaLink="false">178 at http://cmsc411.com</guid>
+ <comments>http://cmsc411.com/gpgpu/overview#comments</comments>
+</item>
+<item>
+ <title>GPGPUs: A CUDA case study</title>
+ <link>http://cmsc411.com/gpgpu/gpgpus-cuda-case-study</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;http://i1-news.softpedia-static.com/images/news2/NVIDIA-CUDA-Compiler-Goes-Open-Source-2.jpg&quot; style=&quot;width: 500px; height: 281px;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;This website will be dedicated to chronicling the growth of Graphics Processing Units (GPUs) from providing hardware accelerated graphics pipleine functions to offering a flexible, scalable, and efficient processing center for all users. In particular we will be discussing the history, structure, and suitability of the General Purpose GPU (GPGPU). Our framework of choice will be the CUDA framework, produced by Nvidia. The reasons for those will be illustrated in the next section. &lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;Our sections will be as follows:&lt;/p&gt;
+&lt;ol style=&quot;margin-left: 40px;&quot;&gt;&lt;li&gt;Overview and background&lt;/li&gt;
+&lt;li&gt;Structure&lt;/li&gt;
+&lt;li&gt;Advantages&lt;/li&gt;
+&lt;li&gt;Disadvantages&lt;/li&gt;
+&lt;li&gt;Applications&lt;/li&gt;
+&lt;li&gt;References&lt;/li&gt;
+&lt;/ol&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Mon, 20 May 2013 12:08:32 +0000</pubDate>
+ <dc:creator>paarth</dc:creator>
+ <guid isPermaLink="false">177 at http://cmsc411.com</guid>
+ <comments>http://cmsc411.com/gpgpu/gpgpus-cuda-case-study#comments</comments>
+</item>
+</channel>
+</rss>

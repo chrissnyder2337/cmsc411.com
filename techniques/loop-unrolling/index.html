@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+<!-- Mirrored from cmsc411.com/techniques/loop-unrolling by HTTrack Website Copier/3.x [XR&CO'2013], Wed, 23 Dec 2015 19:52:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8" />
+<meta about="/techniques/loop-unrolling" property="sioc:num_replies" content="0" datatype="xsd:integer" />
+<link rel="shortcut icon" href="../../sites/all/themes/best_responsive/favicon/index.ico" type="image/vnd.microsoft.icon" />
+<meta content="Loop Unrolling" about="/techniques/loop-unrolling" property="dc:title" />
+<link rel="shortlink" href="../../node/48/index.html" />
+<meta name="Generator" content="Drupal 7 (http://drupal.org)" />
+<link rel="canonical" href="index.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>Loop Unrolling | CMSC411</title>
+<link type="text/css" rel="stylesheet" href="../../sites/default/files/css/css_pbm0lsQQJ7A7WCCIMgxLho6mI_kBNgznNUWmTWcnfoE/index.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../sites/default/files/css/css_n7aK8s-ciXhQyEYWNOJtISbWxtxQiQvnD-N_xWUtD5A/index.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../sites/default/files/css/css_WjkX6t15Lq0xdJZTX8lA7p4jg5vD3TW-XHhIbe9Uwq8/index.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../sites/default/files/css/css_baiEnzu5fQ3rXaCIxkQRgA1_qyhikBe06jPwNnCzNBI/index.css" media="all" />
+<script type="text/javascript" src="../../sites/default/files/js/js_zzcIWOou_jnX0ZWAIA4sb6Xy_p5a8FZNA0GySvuWjPU/index.js"></script>
+<script type="text/javascript" src="../../sites/default/files/js/js_R9UbiVw2xuTUI0GZoaqMDOdX0lrZtgX-ono8RVOUEVc/index.js"></script>
+<script type="text/javascript" src="../../sites/all/modules/lightbox2/js/lightbox/index-21.js?1450899532"></script>
+<script type="text/javascript" src="../../sites/default/files/js/js_XvrGERoZu0ahkS-ONbU3CtcdM8Ig7MTgYdunc3p4-lk/index.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"best_responsive","theme_token":"Pj4spZ7JHy2XqEGvmEWeJEdNLLQ7GJvlbKxKb9R7Kb4","js":{"sites\/all\/modules\/jquery_update\/replace\/jquery\/1.5\/jquery.min.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/admin_menu\/admin_devel\/admin_devel.js":1,"sites\/all\/modules\/lightbox2\/js\/lightbox.js":1,"sites\/all\/themes\/best_responsive\/js\/uniform.js":1,"sites\/all\/themes\/best_responsive\/js\/superfish.js":1,"sites\/all\/themes\/best_responsive\/js\/initialize.js":1,"sites\/all\/themes\/best_responsive\/js\/responsive.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/comment\/comment.css":1,"sites\/all\/modules\/date\/date_api\/date.css":1,"sites\/all\/modules\/date\/date_popup\/themes\/datepicker.1.7.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/views\/css\/views.css":1,"sites\/all\/modules\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/lightbox2\/css\/lightbox_alt.css":1,"sites\/all\/themes\/best_responsive\/style.css":1,"sites\/all\/themes\/best_responsive\/css\/responsive.css":1}},"lightbox2":{"rtl":0,"file_path":"\/(\\w\\w\/)public:\/","default_image":"\/sites\/all\/modules\/lightbox2\/images\/brokenimage.jpg","border_size":10,"font_color":"000","box_color":"fff","top_position":"","overlay_opacity":"0.8","overlay_color":"000","disable_close_click":1,"resize_sequence":0,"resize_speed":400,"fade_in_speed":400,"slide_down_speed":600,"use_alt_layout":1,"disable_resize":0,"disable_zoom":0,"force_show_nav":0,"show_caption":1,"loop_items":0,"node_link_text":"View Image Details","node_link_target":0,"image_count":"Image !current of !total","video_count":"Video !current of !total","page_count":"Page !current of !total","lite_press_x_close":"press \u003Ca href=\u0022#\u0022 onclick=\u0022hideLightbox(); return FALSE;\u0022\u003E\u003Ckbd\u003Ex\u003C\/kbd\u003E\u003C\/a\u003E to close","download_link_text":"","enable_login":false,"enable_contact":false,"keys_close":"c x 27","keys_previous":"p 37","keys_next":"n 39","keys_zoom":"z","keys_play_pause":"32","display_image_size":"original","image_node_sizes":"()","trigger_lightbox_classes":"","trigger_lightbox_group_classes":"","trigger_slideshow_classes":"","trigger_lightframe_classes":"","trigger_lightframe_group_classes":"","custom_class_handler":0,"custom_trigger_classes":"","disable_for_gallery_lists":true,"disable_for_acidfree_gallery_lists":true,"enable_acidfree_videos":true,"slideshow_interval":5000,"slideshow_automatic_start":true,"slideshow_automatic_exit":true,"show_play_pause":true,"pause_on_next_click":false,"pause_on_previous_click":true,"loop_slides":false,"iframe_width":600,"iframe_height":400,"iframe_border":1,"enable_video":0}});
+//--><!]]>
+</script>
+<!--[if lt IE 9]><script src="/sites/all/themes/best_responsive/js/html5.js"></script><![endif]-->
+</head>
+<body class="html not-front not-logged-in one-sidebar sidebar-first page-node page-node- page-node-48 node-type-page">
+    <div id="wrap" class="clearfix">
+  <div id="header-wrap">
+    <header id="header" class="clearfix">
+      <div id="logo">
+        <div id="site-logo"><a href="../../index/index.html" title="Home">
+          <img src="../../sites/default/files/chip/index.png" alt="Home" />
+        </a></div>        <h1 id="site-name">
+          <a href="../../index/index.html" title="Home"><span>CMSC411</span></a>
+        </h1>
+      </div>
+      <nav id="navigation" role="navigation">
+        <div id="main-menu">
+          <ul class="menu"><li class="first leaf"><a href="../../index/index.html">Home</a></li>
+<li class="expanded active-trail"><a href="../../research-topics/index.html" title="" class="active-trail">Research Topics</a><ul class="menu"><li class="first collapsed"><a href="../../arm-architecture/index.html">ARM Architecture</a></li>
+<li class="collapsed"><a href="../../instruction-set-architectures-action/floating-points/index.html">Floating Points</a></li>
+<li class="collapsed"><a href="../../multiprocessors/ins-and-outs-parallel-processing/index.html">IN&#039;s and Out&#039;s of Parallel Processing</a></li>
+<li class="collapsed"><a href="../../hardware/qualcomm-snapdragon-s4/index.html" title="Analysis">Qualcomm Snapdragon S4</a></li>
+<li class="collapsed"><a href="../../storage-systems/storage-virtualization/index.html">Storage Virtualization</a></li>
+<li class="collapsed"><a href="../../multiprocessors/xeon-introduction/index.html">Xeon</a></li>
+<li class="collapsed"><a href="../../miscellaneous/bitcoin/index.html">Bitcoin</a></li>
+<li class="collapsed"><a href="../../hardware/cpu-overclocking/index.html">CPU Overclocking</a></li>
+<li class="collapsed"><a href="../../cloud-computing/index.html">Cloud Computing</a></li>
+<li class="collapsed"><a href="../../hardware/consumer-components-overclockable-system/index.html">Consumer Components for an Overclockable System</a></li>
+<li class="collapsed"><a href="../../storage-systems/file-systems/index.html">File Systems</a></li>
+<li class="collapsed"><a href="../../gpgpu/gpgpus-cuda-case-study/index.html">GPGPUs: A CUDA case study</a></li>
+<li class="collapsed"><a href="../../hardware-pipelining-techniques-software/gpu-architecture/index.html">GPU Architecture</a></li>
+<li class="collapsed"><a href="../../miscellaneous/google-glass/index.html" title="Google Glass">Google Glass</a></li>
+<li class="leaf"><a href="../../hardware/hardware-wars-exploiting-instruction-level-parallelism-ilp/index.html">Hardware Wars: Exploiting Instruction-Level Parallelism (ILP)</a></li>
+<li class="collapsed"><a href="../instruction-level-parallelism/index.html">Instruction Level Parallelism</a></li>
+<li class="collapsed"><a href="../../instruction-set-architectures-action/instruction-set-principles/index.html">Instruction Set Principles</a></li>
+<li class="expanded active-trail"><a href="index.html" class="active-trail active">Loop Unrolling</a><ul class="menu"><li class="first leaf"><a href="../../loop-unrolling-pretest/index.html">Pretest</a></li>
+<li class="leaf"><a href="../loop-unrolling-advantages-and-disadvantages/index.html">Advantages and Disadvantages</a></li>
+<li class="leaf"><a href="../loop-unrolling-contraints/index.html">Constraints</a></li>
+<li class="leaf"><a href="../loop-unrolling-and-rescheduling/index.html">Loop Unrolling and Rescheduling</a></li>
+<li class="last leaf"><a href="../../loop-unrolling-posttest/index.html">Posttest</a></li>
+</ul></li>
+<li class="collapsed"><a href="../../storage-systems/memory-storage-systems-cloud-flash-and-mobile-architecture/index.html">Memory Storage Systems: Cloud, Flash, and Mobile Architecture</a></li>
+<li class="collapsed"><a href="../../hardware/playstation-3/index.html" title="A history of the PlayStation and the development of the PS3&#039;s Cell hardware architecture, including a comparison with the other third-generation game consoles.">PlayStation 3</a></li>
+<li class="collapsed"><a href="../../hardware/playstation-2/index.html">Playstation 2</a></li>
+<li class="collapsed"><a href="../../miscellaneous/raspberry-pi/index.html">Raspberry Pi Architecture</a></li>
+<li class="collapsed"><a href="../../storage-systems/ssd-vs-hdd/index.html">SSD vs. HDD</a></li>
+<li class="collapsed"><a href="../../computer-design-fundamentals/computer-architectures-von-neumann-vs-harvard/index.html">The Overview</a></li>
+<li class="collapsed"><a href="../thread-level-parallelism/index.html" title="Any computer programs being run on a computer has the “code” turned into a lot level assembly language. This new “code” has a behind the scene change different from the original “code”.  The new compiled instruction based “code” has gone through many optimizations, from using pipelining and superscalar architect to using instruction level parallelism. One level of this exploitation is called Thread Level Parallelism (TLP). So what is TLP?">Thread Level Parallelism</a></li>
+<li class="collapsed"><a href="../../software/virtual-machines-overview/index.html">Virtual Machines: An Overview</a></li>
+<li class="collapsed"><a href="../../memory-hierarchy-and-cache/virtual-memory/index.html">Virtual Memory</a></li>
+<li class="collapsed"><a href="../../hardware/xbox-one/index.html">Xbox One</a></li>
+<li class="last collapsed"><a href="../../hardware/graphics-processing-units-mobile-devices/index.html">Graphics Processing Units in Mobile Devices</a></li>
+</ul></li>
+<li class="last expanded"><a title="" class="nolink">Study Guide</a><ul class="menu"><li class="first leaf"><a href="../../chapter-summaries/index.html">Chapter Summaries</a></li>
+<li class="leaf"><a href="../../pipeline-timing-charts-code-sequence-tables/index.html">Pipeline Timing Charts &amp; Code Sequence Tables</a></li>
+<li class="leaf"><a href="../../sample-finals/index.html">Sample Finals</a></li>
+<li class="leaf"><a href="../../sample-midterms/index.html">Sample Midterms</a></li>
+<li class="leaf"><a href="../../sample-quizzes/index.html">Sample Quizzes</a></li>
+<li class="last leaf"><a href="../../worksheets/index.html">Worksheets</a></li>
+</ul></li>
+</ul>        </div>
+      </nav>
+    </header>
+  </div>
+
+  <div id="main-content" class="clearfix">
+    
+    
+        <div id="primary" class="container sidebar-bg clearfix">
+      <section id="content" role="main" class="clearfix">
+        <div id="breadcrumbs"><h2 class="element-invisible">You are here</h2><nav class="breadcrumb"><a href="../../index/index.html">Home</a> » <a href="../../research-topics/index.html" title="">Research Topics</a> » Loop Unrolling</nav></div>                        <div id="content-wrap">
+                    <h1 class="page-title">Loop Unrolling</h1>                                                  <div class="region region-content">
+  <div id="block-system-main" class="block block-system">
+
+      
+  <div class="content">
+                          
+      
+    
+  <div class="content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><h2>Loop Unrolling</h2>
+<p>Loop Unrolling also known as loop unwinding is a technique that attempts to improve the execution speed of a program at the cost of increasing the length of the code. The process of loop unrolling focuses on increasing the number of commands in the body of a loop while reducing the number of loop control statements.</p>
+<p dir="ltr"> </p>
+<p dir="ltr">For example in a loop in high level language like Java:</p>
+<div dir="ltr">for(int i = 0; i &lt; 12; i+=1){</div>
+<div dir="ltr" style="margin-left: 40px;"><span style="line-height: 1.538em;">extrenalFunction(i);</span></div>
+<div dir="ltr">}</div>
+<p dir="ltr"><span style="line-height: 1.538em;">Can be unrolled as:</span></p>
+<div dir="ltr">for(int i=0; i &lt; 12; i+=3){</div>
+<div dir="ltr" style="margin-left: 40px;">externalFunction(i);</div>
+<div dir="ltr" style="margin-left: 40px;">externalFunction(i+1);</div>
+<div dir="ltr" style="margin-left: 40px;">externalFunction(i+2);</div>
+<div dir="ltr">}</div>
+<p dir="ltr"><span style="line-height: 1.538em;">As a result of unrolling the loop, the every second and third comparison of the loop control mechanisms are skipped without any undesired side effects.</span></p>
+<hr /><p dir="ltr"><span style="line-height: 1.538em;">When we examine a similar situation using a pipelined MIPS machine the problem becomes even more obvious when looking at a simple algorithm to calculate R1 factorial (assume R1 greater than 1 and even)</span></p>
+<div dir="ltr">Loop: DMUL R2, R1, R2</div>
+<div dir="ltr" style="margin-left: 40px;">DSUBI R1, R1, #1</div>
+<div dir="ltr" style="margin-left: 40px;">BNEZ R1, Loop</div>
+<div dir="ltr" style="margin-left: 40px;"> </div>
+<div dir="ltr"><span style="line-height: 1.538em;">When performed on a pipelined machine the first major disadvantage can be noticed that a control hazard is created. When a branch condition is executed it may or may not change the program counter to something other than the current instruction plus 4. In a traditional five stage pipeline a branch instruction can not be identified until the Instruction Decode phase, the second stage of the five stage pipeline. This creates an effect where the machine must stall the next Instruction Fetch until it is known where the next instruction is. As a result, one stall for every branch will yield a preformance loss of 10% to 30% depending upon the frequency of the branch instruction.</span></div>
+<div dir="ltr"> </div>
+<div dir="ltr"><span style="line-height: 1.538em;">In order to deal with this hazard there are are a variety of techniques that can be used to elminate the stall. One such technique is to have the machine predict which branch will be taken. The inherent risk with this strategy is that it requires that the pipe be flushed if an incorrect guess is made. One method that can be used to reduce this penalty is to use loop unrolling, this allows the program to bypass this cost. Employing this technique will allow program to keep the pipeline full.</span></div>
+<div dir="ltr"> </div>
+<div dir="ltr"><span style="line-height: 1.538em;">Loop: </span><span style="line-height: 1.538em;">DMUL R2, R1, R2</span></div>
+<div dir="ltr" style="margin-left: 40px;">DSUBI R1, R1 #1</div>
+<div dir="ltr" style="margin-left: 40px;">DMUL R2, R1, R2</div>
+<div dir="ltr" style="margin-left: 40px;">DSUBI R1, R1 #1</div>
+<div dir="ltr" style="margin-left: 40px;">BEZ R1, Loop</div>
+</div></div></div>  </div>
+
+      <footer>
+          </footer>
+  
+    </div>
+  
+</div> <!-- /.block -->
+</div>
+ <!-- /.region -->
+        </div>
+      </section>
+              <aside id="sidebar" role="complementary">
+         <div class="region region-sidebar-first">
+  <div id="block-menu-block-3" class="block block-menu-block">
+
+        <h2 ><span><a href="index.html" class="active-trail active">Loop Unrolling</a></span></h2>
+    
+  <div class="content">
+    <div class="menu-block-wrapper menu-block-3 menu-name-main-menu parent-mlid-0 menu-level-3">
+  <ul class="menu"><li class="first leaf menu-mlid-617"><a href="../../loop-unrolling-pretest/index.html">Pretest</a></li>
+<li class="leaf menu-mlid-613"><a href="../loop-unrolling-advantages-and-disadvantages/index.html">Advantages and Disadvantages</a></li>
+<li class="leaf menu-mlid-615"><a href="../loop-unrolling-contraints/index.html">Constraints</a></li>
+<li class="leaf menu-mlid-614"><a href="../loop-unrolling-and-rescheduling/index.html">Loop Unrolling and Rescheduling</a></li>
+<li class="last leaf menu-mlid-616"><a href="../../loop-unrolling-posttest/index.html">Posttest</a></li>
+</ul></div>
+  </div>
+  
+</div> <!-- /.block -->
+<div id="block-views-teaser-image-block" class="block block-views">
+
+      
+  <div class="content">
+    <div class="view view-teaser-image view-id-teaser_image view-display-id-block view-dom-id-c95941eeaf4465f50545bcc47bee5251">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <div class="views-field views-field-field-teaser-image centered">        <div class="field-content"></div>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+  
+</div> <!-- /.block -->
+<div id="block-menu-block-2" class="block block-menu-block">
+
+      
+  <div class="content">
+    <div class="menu-block-wrapper menu-block-2 menu-name-main-menu parent-mlid-0 menu-level-3">
+  <ul class="menu"><li class="first leaf menu-mlid-617"><a href="../../loop-unrolling-pretest/index.html">Pretest</a></li>
+<li class="leaf menu-mlid-613"><a href="../loop-unrolling-advantages-and-disadvantages/index.html">Advantages and Disadvantages</a></li>
+<li class="leaf menu-mlid-615"><a href="../loop-unrolling-contraints/index.html">Constraints</a></li>
+<li class="leaf menu-mlid-614"><a href="../loop-unrolling-and-rescheduling/index.html">Loop Unrolling and Rescheduling</a></li>
+<li class="last leaf menu-mlid-616"><a href="../../loop-unrolling-posttest/index.html">Posttest</a></li>
+</ul></div>
+  </div>
+  
+</div> <!-- /.block -->
+<div id="block-views-authors-block" class="block block-views">
+
+        <h2 ><span>Authors</span></h2>
+    
+  <div class="content">
+    <div class="view view-authors view-id-authors view-display-id-block view-dom-id-4e38b411fee1d8c286aae30262426b14">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first">
+      
+  <div class="views-field views-field-field-authors">        <div class="field-content">Mark Penny</div>  </div>  </div>
+  <div class="views-row views-row-2 views-row-even views-row-last">
+      
+  <div class="views-field views-field-field-authors">        <div class="field-content">James Jessup</div>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+  
+</div> <!-- /.block -->
+<div id="block-views-content-topics-block" class="block block-views">
+
+        <h2 ><span>Category</span></h2>
+    
+  <div class="content">
+    <div class="view view-content-topics view-id-content_topics view-display-id-block view-dom-id-0f915ff1cb04660098219bc24b3da6be">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <div class="views-field views-field-term-node-tid">        <span class="field-content"><div class="item-list"><ul><li class="first last"><a href="../../topics/techniques/index.html">Techniques</a></li>
+</ul></div></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+  
+</div> <!-- /.block -->
+<div id="block-views-topic-pages-block" class="block block-views">
+
+        <h2 ><span>Related Topics</span></h2>
+    
+  <div class="content">
+    <div class="view view-topic-pages view-id-topic_pages view-display-id-block view-dom-id-41d7814c3e352afe818f8d96a6b44a31">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="index.html" class="active">Loop Unrolling</a></span>  </div>  </div>
+  <div class="views-row views-row-2 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="../instruction-level-parallelism/index.html">Instruction Level Parallelism</a></span>  </div>  </div>
+  <div class="views-row views-row-3 views-row-odd views-row-last">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="../thread-level-parallelism/index.html">Thread Level Parallelism</a></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+  
+</div> <!-- /.block -->
+</div>
+ <!-- /.region -->
+        </aside> 
+          </div>
+
+    <div class="clear"></div>
+  </div>
+
+    <footer id="footer-bottom">
+    <div id="footer-area" class="clearfix">
+              <div id="footer-block-wrap" class="clearfix">
+          <div class="footer-block">
+            <div class="region region-footer-first">
+  <div id="block-block-2" class="block block-block">
+
+        <h2 ><span>Postscript</span></h2>
+    
+  <div class="content">
+    <p>For several of the files available on this website you will need a postscript interpreter. <a href="http://pages.cs.wisc.edu/~ghost/gsview/">GSview</a><a></a> provides this capability for Windows machines, OS/2, DEC Alpha machines, and UNIX/X11 boxes.</p>
+  </div>
+  
+</div> <!-- /.block -->
+</div>
+ <!-- /.region -->
+          </div>                    <div class="footer-block remove-margin">
+            <div class="region region-footer-third">
+  <div id="block-menu-menu-academic-resources" class="block block-menu">
+
+        <h2 ><span>Academic Resources</span></h2>
+    
+  <div class="content">
+    <ul class="menu"><li class="first leaf"><a href="http://www.cs.umd.edu/users/meesh/cmsc411/website/" title="The ">Original CMSC411 Website</a></li>
+<li class="leaf"><a href="http://www.cs.umd.edu/users/meesh/webpages/cmsc311/links/links.html" title="Need to review a 311 concept? Check here first!">311 Technical Links</a></li>
+<li class="last leaf"><a href="https://piazza.com/" title="Class Discussion">Piazza</a></li>
+</ul>  </div>
+  
+</div> <!-- /.block -->
+</div>
+ <!-- /.region -->
+          </div>        </div>
+        <div class="clear"></div>
+            
+      <div class="region region-footer">
+  <div id="block-block-1" class="block block-block">
+
+      
+  <div class="content">
+    <p>This page, all problem sets, and exams linked to it are copyrighted. Use of these pages for the CMSC411 class at the University of Maryland is permitted. Any other use requires the permission of the author (<a href="mailto:meesh@cs.umd.edu">Dr. Michelle Hugue</a>).</p>
+  </div>
+  
+</div> <!-- /.block -->
+</div>
+ <!-- /.region -->
+    </div>
+  </footer>
+  
+  <div id="copyright">
+    Copyright &copy; 2015, <a href="../../index/index.html">CMSC411</a>. Drupal site developed by <a href="http://chrissnyder.org/" target="_blank">Christopher Snyder</a>. Base theme by  <a href="http://www.devsaran.com/" target="_blank">Devsaran</a>
+  </div>
+</div>
+  </body>
+
+<!-- Mirrored from cmsc411.com/techniques/loop-unrolling by HTTrack Website Copier/3.x [XR&CO'2013], Wed, 23 Dec 2015 19:52:18 GMT -->
+</html>

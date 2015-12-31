@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xml:base="http://cmsc411.com"  xmlns:dc="http://purl.org/dc/elements/1.1/">
+<channel>
+ <title>CMSC411 - Computer Design Fundamentals</title>
+ <link>http://cmsc411.com/topics/computer-design-fundamentals</link>
+ <description> 
+Online Resources:
+
+A Matter of Means
+
+
+Big-Endian vs. Little-Endian: On Holy Wars and A Plea for Peace.
+
+
+SiSoft Sandra 2003: a de-facto benchmarking tool used by PC-Enthusiasts.
+
+a direct link to the download page
+
+
+
+a benchmark from FutureMark
+
+Student Projects:
+
+Toy * Benchmark * Analysis
+
+
+The Role of Benchmarks in Computer Architecture
+
+
+Explore the Heart of Your PC
+
+
+PC vs. PDA
+
+</description>
+ <language>en</language>
+<item>
+ <title>The Differences</title>
+ <link>http://cmsc411.com/computer-design-fundamentals/differences</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt; &lt;/p&gt;
+&lt;h2 style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;a href=&quot;http://v-codes.blogspot.com/2010/09/difference-between-harward-and-von.html&quot;&gt;Differences between Harvard and Von Neumann computer architectures&lt;/a&gt;&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;There are basically two types of digital computer architectures. The first one is called Von Neumann architecture and later Harvard architecture was adopted for designing digital computers.&lt;/p&gt;
+&lt;h4&gt;&lt;strong&gt;Von Neumann Architecture:&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;/sites/default/files/files/von.jpg&quot; style=&quot;width: 320px; height: 107px; &quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;It is named after the mathematician and early computer scientist John Von Neumann.&lt;/li&gt;
+&lt;li&gt;The computer has single storage system (memory) for storing data as well as program to be executed.&lt;/li&gt;
+&lt;li&gt;Processor needs two clock cycles to complete an instruction. Pipelining the instructions is not possible with this architecture.&lt;/li&gt;
+&lt;li&gt;In the first clock cycle the processor gets the instruction from memory and decodes it. In the next clock cycle the required data is taken from memory. For each instruction this cycle repeats and hence needs two cycles to complete an instruction.&lt;/li&gt;
+&lt;li&gt;This is a relatively older architecture and was replaced by Harvard architecture.&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt; &lt;/p&gt;
+&lt;h4&gt;&lt;strong&gt;Harvard Architecture:&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;/sites/default/files/files/harvard.jpg&quot; style=&quot;width: 320px; height: 73px; &quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt; The name is originated from &quot;Harvard Mark I&quot; a relay based old computer.&lt;/li&gt;
+&lt;li&gt;The computer has two separate memories for storing data and program.&lt;/li&gt;
+&lt;li&gt;Processor can complete an instruction in one cycle if appropriate pipelining strategies are implemented.&lt;/li&gt;
+&lt;li&gt;In the first stage of pipeline the instruction to be executed can be taken from program memory. In the second stage of pipeline data is taken from the data memory using the decoded instruction or address. &lt;/li&gt;
+&lt;li&gt;Most of the modern computing architectures are based on Harvard architecture. But the number of stages in the pipeline varies from system to system.&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;For further reading on comparing and contrast for Harvard and van Neumann computer architecture:&lt;strong&gt; Link:&lt;/strong&gt; &lt;a href=&quot;http://www.cse.wustl.edu/~lu/cse467s/slides/dsp.pdf&quot;&gt;http://www.cse.wustl.edu/~lu/cse467s/slides/dsp.pdf&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Mon, 19 Aug 2013 03:02:06 +0000</pubDate>
+ <dc:creator>jkidd28</dc:creator>
+ <guid isPermaLink="false">294 at http://cmsc411.com</guid>
+ <comments>http://cmsc411.com/computer-design-fundamentals/differences#comments</comments>
+</item>
+<item>
+ <title>The Harvard Architecture</title>
+ <link>http://cmsc411.com/computer-design-fundamentals/harvard-architecture</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;h2 style=&quot;text-align: center;&quot;&gt; &lt;/h2&gt;
+&lt;h2 style=&quot;text-align: center;&quot;&gt;The Harvard Architecture&lt;/h2&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;h4&gt;What is Harvard Architecture?&lt;/h4&gt;
+&lt;p&gt;The Harvard architecture is a computer architecture with physically separate storage and signal pathways for instructions and data. The term originated from the Harvard Mark I relay-based computer, which stored instructions on punched tape (24 bits wide) and data in electro-mechanical counters. These early machines had data storage entirely contained within the central processing unit, and provided no access to the instruction storage as data. Programs needed to be loaded by an operator; the processor could not boot itself.&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;h4&gt;Harvard Architecture Speed&lt;/h4&gt;
+&lt;p&gt;In recent years the speed of the CPU has grown many times in comparison to the &lt;span style=&quot;line-height: 1.538em;&quot;&gt;access speed of the main memory. Care needs to be taken to reduce the number of times main memory is accessed in order to maintain performance. If, for instance, every instruction run in the CPU requires an access to memory, the computer gains nothing for increased CPU speed — a problem referred to as being memory bound. &lt;/span&gt;&lt;span style=&quot;line-height: 1.538em;&quot;&gt;It is possible to make extremely fast memory but this is only practical for small &lt;/span&gt;&lt;span style=&quot;line-height: 1.538em;&quot;&gt;amounts of memory for both cost and signal routing reasons. The solution is to &lt;/span&gt;&lt;span style=&quot;line-height: 1.538em;&quot;&gt;provide a small amount of very fast memory known as a CPU cache which holds &lt;/span&gt;&lt;span style=&quot;line-height: 1.538em;&quot;&gt;recently accessed data. As long as the memory that the CPU needs is in the cache, the performance hit is much smaller than it is when the cache has to turn around and get the data from the main memory. Cache tuning is an important aspect of computer design.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Modern high performance CPU chip designs incorporate aspects of both Harvard and von Neumann architecture. On-chip cache memory is divided into an instruction cache and a data cache. Harvard architecture is used as the CPU accesses the cache. In the case of a cache miss, however, the data is retrieved from the main memory, which is not divided into separate instruction and data sections. Thus, while a von Neumann architecture is presented to the programmer, the hardware implementation gains the efficiencies of the Harvard architecture.&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;h4&gt;No Harvard Architecture?&lt;/h4&gt;
+&lt;p&gt;Under pure von Neumann architecture the CPU can be either reading an instruction or reading/writing data from/to the memory. Both cannot occur at the same time since the instructions and data use the same bus system.&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;h4&gt;How Harvard Memory Architecture tries to solve the above problem?&lt;/h4&gt;
+&lt;p&gt;In a computer using the Harvard architecture, the CPU can both read an instruction and perform a data memory access at the same time, even without a cache. A Harvard architecture computer can thus be faster for a given circuit complexity because instruction fetches and data access do not contend for a single memory pathway.&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Mon, 19 Aug 2013 02:48:55 +0000</pubDate>
+ <dc:creator>jkidd28</dc:creator>
+ <guid isPermaLink="false">293 at http://cmsc411.com</guid>
+ <comments>http://cmsc411.com/computer-design-fundamentals/harvard-architecture#comments</comments>
+</item>
+<item>
+ <title>The Von Neumann Architecture</title>
+ <link>http://cmsc411.com/computer-design-fundamentals/von-neumann-architecture</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt; &lt;/p&gt;
+&lt;div&gt;
+&lt;h2 align=&quot;center&quot;&gt;&lt;strong&gt;VON NEUMANN ARCHITECTURE&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;Most of today’s computer designs are based on concepts developed by John von Neumann referred to as the VON NEUMANN ARCHITECTURE. Von Neumann proposed that there should be a unit performing arithmetic and logical operation on the data. This unit is termed as Arithmetic Logic (ALU). One of the ways to provide instruction to such computer will be by connecting various logic components in such a fashion, that they produce the desired output for a given set of inputs. The process of connecting various logic components in specific configuration to achieve desired results is called Programming. This programming since is achieved by providing instruction within hardware by various connections is termed as Hardwired. But this is a very inflexible process of programming. Let us have a general configuration for arithmetic and logical functions. In such a case there is a need of a control signal, which directs the ALU to perform a specific arithmetic or logic function on the data. Therefore, in such a system, by changing the control signal the desired function can be performed on data. Representation of facts, concepts, or instructions in a formalized manner suitable for communication, interpretation, processed by humans or by automatic means. Any representations such as characters or analog quantities to which meaning is or might be assigned To Any operation, which needs to be performed on the data, then can be obtained by providing a set of control signals. This, for a new operation one only needs to change the set of control signals. But, how can these control signals by supplied?&lt;/p&gt;
+&lt;p&gt; Let us try to answer this from the definition of a program. A program consists of a sequence of steps. Each of these steps, require certain arithmetic or logical or input/output operation to be performed on data. Therefore, each step may require a new set of control signals. Is it possible for us to provide a unique code for each set of control signals? Well the answer is yes. But what do we do with these codes? What can add a hardware segment, which accepts a code and generates termed as Control Unit (CU). This, a program now consists of a sequence of codes. This machine is quite flexible, as we only need to provide a new sequence of codes for a new program. Each code is, in effect, and instruction, for the computer the hardware interprets each of these instructions and generates respective control signals, The Arithmetic Logic Unit (ALU) and the Control Unit (CU) together are termed as the Central Processing Unit (CPU). The CPU is the most important component of a computer’s hardware. The ALU performs the arithmetic operations such as addition, subtraction, multiplication and division, and the logical operations such as: “Is A =B?” (Where A and B are both numeric and alphanumeric data), “Is a given character equal to M (for male) or F (for female)?” The control unit interprets instructions and produces the respective control signals.&lt;/p&gt;
+&lt;p&gt;All the arithmetic and logical Operations are performed in the CPU in special storage areas called registers. ‘The size of the register is one of the important considerations in determining the processing capabilities of the CPU. Register size refers to the amount of information that can be held in a register at a time for processing. The larger the register size, the faster may be the speed o processing. A CPU’s processing power is measured in Million Instructions per Second (MIPS). The performance of the CPU was measured in milliseconds (one thousand of a second) on the first generation computers, in microseconds (one millionth of a second) on second-generation computers, and is expected to be measured in Pico-seconds (one 1000th of a nano-second) in the later generations. How can the instruction and data be put into the computers? An external environment supplies the instruction and data, therefore, an input module is needed. The main responsibility of input module will be to put the data in the form of signals that can be recognized by the system. Similarly, we need another component, which will report the results in the results in proper format and form. This component is called output module. These components are referred together as input/output (I/O) components. In addition, to transfer the information, the computer system internally needs the system interconnections. Most common input/output devices are keyboard, monitor and printer, and the most common interconnection structure is the Bus structure.&lt;/p&gt;
+&lt;p&gt;Are these two components sufficient for a working computer? No, because input devices can bring instructions or data only sequentially and a program may not be executed sequentially as jump instructions are normally encountered in programming. In addition, more than one data elements may be required at a time. Therefore, a temporary storage area is needed in a computer to store temporarily the instructions and the data. This component is referred to as memory. It was pointed out by von-Neumann that the same memory can be used or storing data and instructions. In such cases the data can be treated as data on which processing can be performed, while instructions can be treated as data, which can be used for the generation of control signals. The memory unit stores all the information in a group of memory cells, also called memory locations, as binary digits. Each memory location has a unique address and can be addressed independently. The contents of the desired memory locations are provided to the central processing unit by referring to the address of the memory location. The amount of information that can be held in the main memory is known as memory capacity. The capacity of the main memory s measured in Kilo Bytes (KB) or Mega Bytes (B). One-kilo byte stands for 210 bytes, which are 1024 bytes (or approximately 1000 bytes). A megabyte stands for 220 bytes, which is approximately little over one million bytes. When 64-bit CPU&#039;s become common memory will start to be spoken about in terabytes, petabytes, and Exabyte’s.&lt;/p&gt;
+&lt;h4&gt;&lt;strong&gt;&lt;u&gt;Summary of the key features of a von Neumann machine.&lt;/u&gt;&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;• The hardware of the von Neumann machine consists of a CPU, which includes an ALU and CU.&lt;/p&gt;
+&lt;p&gt;• A main memory system&lt;/p&gt;
+&lt;p&gt;• An Input/output system&lt;/p&gt;
+&lt;p&gt;• The von Neumann machine uses stored program concept, e.g., the program and data are stored in the same memory unit. The computers prior to this idea used Paper Name: Computer Organization and Architecture to store programs and data on separate memories. Entering and modifying these programs were very difficult as they were entered manually by setting switches and plugging and unplugging.&lt;/p&gt;
+&lt;p&gt;• Each location of the memory of von Neumann machine can be addressed independently.&lt;/p&gt;
+&lt;p&gt;• Execution of instructions in von Neumann machine is carried out in a sequential fashion (unless explicitly altered by the program itself) from one instruction to the next. The following figure shows the basic structure of von Neumann machine. A von Neumann machine has only a single path between the main memory and control unit (CU). This feature/ constraint is refereed to as von Neumann bottleneck. Several other architectures have been suggested for modern computers&lt;/p&gt;
+&lt;h4&gt;&lt;strong&gt;&lt;u&gt;von Neumann Machine&lt;/u&gt;&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;/sites/default/files/files/van.png&quot; style=&quot;width: 288px; height: 90px; &quot; /&gt;&lt;/p&gt;
+&lt;p&gt;• Attributed to John von Neumann&lt;/p&gt;
+&lt;p&gt;• Treats Program and Data equally&lt;/p&gt;
+&lt;p&gt;• One port to Memory. Simplified Hardware&lt;/p&gt;
+&lt;p&gt;• &quot;von Neumann Bottleneck&quot; (rate at which data and program can get into the&lt;/p&gt;
+&lt;p&gt;CPU is limited by the bandwidth of the interconnect)&lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Mon, 19 Aug 2013 02:28:33 +0000</pubDate>
+ <dc:creator>jkidd28</dc:creator>
+ <guid isPermaLink="false">292 at http://cmsc411.com</guid>
+ <comments>http://cmsc411.com/computer-design-fundamentals/von-neumann-architecture#comments</comments>
+</item>
+<item>
+ <title>Computer Architectures: the Von Neumann vs  the Harvard</title>
+ <link>http://cmsc411.com/computer-design-fundamentals/computer-architectures-von-neumann-vs-harvard</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;h1&gt;A Brief Overview&lt;/h1&gt;
+&lt;p&gt;The Von Neumann and the Harvard, two prominent computer architectures that have made many contributions to the evolution of computing. These two designs have helped shape a multitude of computer implementations over the years and they continue to be the backbone in many computers that we see and will see going forward. We will dive into details concerning both on the architectures as well go through some comparisons between the two.&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;/sites/default/files/files/von_newmann_architecture.jpg&quot; style=&quot;width: 500px; height: 450px;&quot; /&gt;&lt;/p&gt;
+&lt;h5&gt;Begin Your Journey&lt;/h5&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;http://cmsc411.com/computer-design-fundamentals/von-neumann&quot;&gt;The Von Neumann&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://cmsc411.com/computer-design-fundamentals/harvard-architecture&quot;&gt;The Harvard Architecture&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://cmsc411.com/computer-design-fundamentals/differences&quot;&gt;The Differences&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://cmsc411.com/miscellaneous/assessment&quot;&gt;Assessment&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Sun, 18 Aug 2013 02:40:41 +0000</pubDate>
+ <dc:creator>jkidd28</dc:creator>
+ <guid isPermaLink="false">289 at http://cmsc411.com</guid>
+ <comments>http://cmsc411.com/computer-design-fundamentals/computer-architectures-von-neumann-vs-harvard#comments</comments>
+</item>
+</channel>
+</rss>

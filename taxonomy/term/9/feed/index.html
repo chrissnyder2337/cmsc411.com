@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xml:base="http://cmsc411.com"  xmlns:dc="http://purl.org/dc/elements/1.1/">
+<channel>
+ <title>CMSC411 - Instruction Set Architectures in Action</title>
+ <link>http://cmsc411.com/topics/instruction-set-architectures-action</link>
+ <description> 
+Online Resources:
+The Art of Assembly and Interrupts
+x86 Glossary of Terms
+6th Generation CPU Comparisons
+Neophyte&#039;s Guide to DLX
+Help with DLX
+P4 vs. G4e
+Student Projects:
+x86: Evolution of an Architecture
+IA-64 The EPIC Instruction Set Architecture of the Future?
+Description of RISC (The SH-4 Risc Processor)
+Into the Fray with SIMD (Single Instruction Multiple Data)
+Multiple Instruction Multiple Data (MIMD) Architecture
+RISCy Business: Intel&#039;s New IA-64 Architecture
+MMX Technology
+Instruction Set Architectures
+Spim Tutorial
+Empowered by MMX
+Pentium Pro Architecture
+Introduction to the ARM System Architecture
+Apple G4 architecture
+IBM Power PC-620
+Intel Pentium 4
+Internal Workings of the UltraSparc IIi
+MIPS 4000
+ 
+</description>
+ <language>en</language>
+<item>
+ <title>Pipelined MIPS</title>
+ <link>http://cmsc411.com/instruction-set-architectures-action/pipelined-mips</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt;&lt;strong&gt;Why pipelining?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;While a typical instruction takes 3-4 cycles (i.e. 3-4 CPI), a pipelined processor targets 1 CPI (and gets close to it).&lt;/p&gt;
+&lt;p&gt;How is it possible? By overlapping the execution of consecutive instructions&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Pipeline Architecture&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;A pipelined computer executes instructions concurrently.&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;Hardware units are organized into stages:&lt;/li&gt;
+&lt;li&gt;Execution in each stage takes exactly 1 clock period.&lt;/li&gt;
+&lt;li&gt;Stages are separated by pipeline registers that preserve and pass partial results to the next stage.&lt;/li&gt;
+&lt;li&gt;Unfortunately, as noted earlier, speed = complexity + cost. The pipeline approach brings additional expense plus its own set of problems and complications, called hazards.&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;The Laundry Example&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;As an introduction to the concept of pipelining, we use the example of doing one’s laundry.&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;Most people have – or have access to – a washer and dryer.&lt;/li&gt;
+&lt;li&gt;Assume that you need to wash several washer loads of clothing.&lt;/li&gt;
+&lt;li&gt;Would anyone divide the clothing into washer loads and then wash dry fold and put away the first load before starting the wash, dry, fold and put away the first load before starting the second?&lt;/li&gt;
+&lt;li&gt;No, if you were washing clothes, you would finish washing the first load put it in the dryer and start the second load washing load, put it in the dryer, and start the second load washing.&lt;/li&gt;
+&lt;li&gt;If there were more loads to wash, you would begin to fold and put away finished clothing while the later loads were washing and drying.&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;/sites/default/files/files/isa/image3041.jpg&quot; style=&quot;width: 665px; height: 416px;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Example of Pipelining&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Pipelining doesn&#039;t help latency of single load, it helps throughput of entire workload&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;Pipeline rate limited by slowest pipeline stage&lt;/li&gt;
+&lt;li&gt;Multiple tasks operating simultaneously using different resources&lt;/li&gt;
+&lt;li&gt;Potential speedup = Number pipe stages&lt;/li&gt;
+&lt;li&gt;Unbalanced lengths of pipe stages reduces speedup&lt;/li&gt;
+&lt;li&gt;Time to &quot;fill&quot; pipeline and to &quot;drain&quot; it reduces speedup&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;/sites/default/files/files/isa/image3041.gif&quot; style=&quot;width: 594px; height: 344px;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Speed Advantage of the Pipeline&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The multicycle, serial processor can execute n instructions in ns clock periods, or ETS = ns, where ET is the execution time and s is the number of stages.&lt;/p&gt;
+&lt;p&gt;A pipelined processor with s stages can execute n instructions in&lt;/p&gt;
+&lt;p&gt;ETP = s + (n ─ 1) clock periods.&lt;/p&gt;
+&lt;p&gt;The ideal pipeline speedup depends on the number of stages, and can be greater for more stages (hence Intel’s choice of a 20-stage pipeline for the current P-IV).&lt;/p&gt;
+&lt;p&gt;Thus the speed advantage of pipeline over multicycle can be defined as:&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;/sites/default/files/files/isa/image3041a.jpg&quot; style=&quot;width: 447px; height: 84px;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Overlapped Pipeline Example&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;/sites/default/files/files/isa/image3041a.gif&quot; style=&quot;width: 605px; height: 311px;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Pipeline Processor Operation Summary&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;Pipelining replaces the “single-cycle” processor with a row of five “mini-processors,” each capable of completing one part of each instruction.&lt;/li&gt;
+&lt;li&gt;A new instruction is started every clock cycle.&lt;/li&gt;
+&lt;li&gt;Inter-process registers store instruction information (data, write register, branch conditions) between cycles so that the entire “instruction envelope” is passed between the pipeline stages.&lt;/li&gt;
+&lt;li&gt;When the pipeline is filled with instructions, an instruction completes every clock cycle.&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt; &lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Wed, 08 May 2013 02:37:18 +0000</pubDate>
+ <dc:creator>mfinelli</dc:creator>
+ <guid isPermaLink="false">167 at http://cmsc411.com</guid>
+ <comments>http://cmsc411.com/instruction-set-architectures-action/pipelined-mips#comments</comments>
+</item>
+<item>
+ <title>Sequential MIPS</title>
+ <link>http://cmsc411.com/instruction-set-architectures-action/sequential-mips</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt;Consider the operation of MIPS without pipelining. Every MIPS instruction can be&lt;/p&gt;
+&lt;p&gt;executed in at most 5 clock cycles - representing five phases of operation:&lt;/p&gt;
+&lt;ol&gt;&lt;li&gt;Instruction Fetch (IF):&lt;/li&gt;
+&lt;li&gt;Instruction decode/register fetch cycle (ID):&lt;/li&gt;
+&lt;li&gt;Execution/effective address cycle (EX):&lt;/li&gt;
+&lt;li&gt;Memory access/branch completion cycle (MEM):&lt;/li&gt;
+&lt;li&gt;Write-back cycle (WB):&lt;/li&gt;
+&lt;/ol&gt;&lt;p&gt;MIPS Instruction Fetch (IF):&lt;br /&gt;     IR  &amp;lt;- Mem[PC]          ; Instruction Register, Program Counter&lt;br /&gt;     NPC &amp;lt;- PC + 4           ; Next Program Counter&lt;/p&gt;
+&lt;p&gt; MIPS Instruction decode/register fetch cycle (ID):&lt;br /&gt;     A   &amp;lt;- Regs[IR(6..10)]&lt;br /&gt;     B   &amp;lt;- Regs[IR(11..15)]&lt;br /&gt;     Imm &amp;lt;- sign extended IR(16..31)&lt;br /&gt;     decoding -&amp;gt; will determine the following sequence based on instruction&lt;br /&gt; &lt;/p&gt;
+&lt;p&gt;MIPS Execution/effective address cycle (EX):&lt;br /&gt;     one of the following depending on the instruction decoded:&lt;br /&gt;     a. memory reference:&lt;br /&gt;          ALUoutput &amp;lt;- A + Imm&lt;br /&gt;     b. register-register ALU instruction:&lt;br /&gt;          ALUoutput &amp;lt;- A op B&lt;br /&gt;     c. register-immediate ALU operation:&lt;br /&gt;          ALUoutput &amp;lt;- A op Imm&lt;br /&gt;     d. branch:&lt;br /&gt;          ALUoutput &amp;lt;- NPC + Imm&lt;br /&gt;          Cond &amp;lt;- A op 0&lt;/p&gt;
+&lt;p&gt;MIPS Memory access/branch completion cycle (MEM):&lt;br /&gt;     one of the following based on the instruction decoded:&lt;br /&gt;     a. Memory load&lt;br /&gt;          LMD &amp;lt;- Mem[ALUoutput]&lt;br /&gt;     b. Memory store&lt;br /&gt;          Mem[ALUoutput] &amp;lt;- B&lt;br /&gt;     c. Branch&lt;br /&gt;          if(cond) PC &amp;lt;- ALUoutput&lt;br /&gt;            else   PC &amp;lt;- NPC&lt;br /&gt; &lt;/p&gt;
+&lt;p&gt;MIPS Write-back cycle (WB):&lt;br /&gt;     one of the following depending on the instruction decoded:&lt;br /&gt;     a. register-register ALU instruction&lt;br /&gt;          Regs[IR(16..20)] &amp;lt;- ALUoutput&lt;br /&gt;     b. register-immediate ALU instruction&lt;br /&gt;          Regs[IR(11..15)] &amp;lt;- ALUoutput&lt;br /&gt;     c. load instruction&lt;br /&gt;          Regs[IR(11..15)] &amp;lt;- LMD&lt;br /&gt;     d. branch instruction - does not have a WB cycle&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Wed, 08 May 2013 02:27:20 +0000</pubDate>
+ <dc:creator>mfinelli</dc:creator>
+ <guid isPermaLink="false">166 at http://cmsc411.com</guid>
+ <comments>http://cmsc411.com/instruction-set-architectures-action/sequential-mips#comments</comments>
+</item>
+<item>
+ <title>MIPS</title>
+ <link>http://cmsc411.com/instruction-set-architectures-action/mips</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;h2&gt;MIPS&lt;/h2&gt;
+&lt;h3&gt;Goals of the 64bit MIPS architecture:&lt;/h3&gt;
+&lt;ul&gt;&lt;li&gt;
+&lt;div&gt;Use general-purpose registers with a load-store architecture&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;div&gt;Support these addressing modes: displacement (with an address offset size of 12–16 bits), immediate (size 8–16 bits), and register indirect&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;div&gt;Support these data sizes and types: 8-, 16-, 32-, and 64-bit integers and 64-bit IEEE 754 floating-point numbers&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;div&gt;Support these simple instructions, since they will dominate the number of instructions executed: load, store, add, subtract, move register-register, and shift&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;div&gt;Compare equal, compare not equal, compare less, branch (with a PC-relative address at least 8 bits long), jump, call, and return&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;div&gt;Use fixed instruction encoding if interested in performance, and use variable instruction encoding if interested in code size&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;div&gt;Provide at least 16 general-purpose registers, be sure all addressing modes apply to all data transfer instructions&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;div&gt;Aim for a minimalist instruction set&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;&lt;h3&gt;Registers in MIPS&lt;/h3&gt;
+&lt;ul&gt;&lt;li&gt;
+&lt;div&gt;32 64-bit general-purpose registers (GPRs), sometimes called integer registers, named R0, R1, ... , R31.&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;div&gt;32 floating-point registers (FPRs), named F0, F1, ... , F31, which can hold 32 single-precision (32-bit) values or 32 double-precision (64-bit) values&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;div&gt;When holding one single-precision number, the other half an FPR is unused&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;div&gt;R0 is always 0&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;&lt;h3&gt;MIPS addressing modes&lt;/h3&gt;
+&lt;ul&gt;&lt;li&gt;The data types are 8-bit bytes, 16-bit half words, 32-bit words, and 64-bit double words for integer data and 32-bit single precision and 64-bit double precision for floating point&lt;/li&gt;
+&lt;li&gt;The only data addressing modes are immediate and displacement, both with 16-bit fields&lt;/li&gt;
+&lt;li&gt;Register indirect is accomplished simply by placing 0 in the 16-bit displacement field&lt;/li&gt;
+&lt;li&gt;Absolute addressing with a 16-bit field is accomplished by using register 0 as the base register&lt;/li&gt;
+&lt;li&gt;MIPS memory is byte addressable with a 64-bit address&lt;/li&gt;
+&lt;li&gt;Mode bit that allows software to select either Big Endian or Little Endian&lt;/li&gt;
+&lt;/ul&gt;&lt;h3&gt;MIPS instruction format&lt;/h3&gt;
+&lt;ul&gt;&lt;li&gt;2 addressing modes that are to be encoded in the opcode&lt;/li&gt;
+&lt;li&gt;32 bit instructions (6 bit primary opcode)&lt;/li&gt;
+&lt;/ul&gt;&lt;h3&gt;MIPS operations&lt;/h3&gt;
+&lt;ul&gt;&lt;li&gt;4 classes of operations (loads and stores, ALU operations, branches and jumps, and floating-point operations)&lt;/li&gt;
+&lt;li&gt;Any of the general-purpose or floating-point registers may be loaded or stored&lt;/li&gt;
+&lt;li&gt;Loading R0 has no effect&lt;/li&gt;
+&lt;li&gt;Single-precision floating-point numbers occupy half a floating-point register&lt;/li&gt;
+&lt;li&gt;Conversions between single and double precision must be done explicitly&lt;/li&gt;
+&lt;li&gt;All ALU instructions are register-register instructions (add, subtract, AND, OR, XOR, and shifts) with immediate forms provided using a 16-bit sign-extended immediate&lt;/li&gt;
+&lt;li&gt;Flow Control:
+&lt;ul&gt;&lt;li&gt;Compare instructions: compare two registers to see if the first is less than the second. If true, a 1 is placed in the destination register (to represent true); otherwise a 0 is placed. Also called &quot;set&quot; operations because they set a register&lt;/li&gt;
+&lt;li&gt;Jump instructions are differentiated by the two ways to specify the destination address and by whether or not a link is made&lt;/li&gt;
+&lt;li&gt;Two types of jumps: plain jump and jump and link which places the return address in&lt;/li&gt;
+&lt;li&gt;All branches are conditional specified by instruction which may test the register source for zero or nonzero, whether it contains a data value or the result of a compare, whether it&#039;s negative or equal to another register&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Floating point:
+&lt;ul&gt;&lt;li&gt;Instructions indicate whether there is single or double precision (.S or .D)&lt;/li&gt;
+&lt;li&gt;MIPS64 can perform two 32-bit operations on a single 64-bit register with paired single operations (.PS)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Wed, 08 May 2013 02:20:51 +0000</pubDate>
+ <dc:creator>mfinelli</dc:creator>
+ <guid isPermaLink="false">165 at http://cmsc411.com</guid>
+ <comments>http://cmsc411.com/instruction-set-architectures-action/mips#comments</comments>
+</item>
+<item>
+ <title>Classifications</title>
+ <link>http://cmsc411.com/instruction-set-architectures-action/classifications</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt;&lt;span style=&quot;line-height: 1.538em;&quot;&gt;Classify based on type of internal storage in processor.&lt;/span&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;strong&gt;Stack: Ope&lt;span style=&quot;font-size: 1.154em; line-height: 1.538em;&quot;&gt;rands implicitly on top of stack.&lt;/span&gt;&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;/sites/default/files/files/isa/image3041.jpg&quot; style=&quot;font-family: monospace; width: 114px; height: 156px; float: left;&quot; /&gt;&lt;/p&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;div&gt;&lt;span style=&quot;line-height: 1.538em; font-size: 12.727272033691406px; font-weight: normal;&quot;&gt;TOS implicit in instructions&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;      push B                    stk[TOS++] = mem[B]&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;      push C                    stk[TOS++] = mem[C]&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;      add                       stk[TOS++] = stk[--TOS] + stk[--TOS]&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;      pop A                     mem[A] = stk[--TOS]&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;h4&gt; &lt;/h4&gt;
+&lt;h4&gt;&lt;strong style=&quot;font-size: 1.154em; line-height: 1.538em;&quot;&gt;Accumulator:&lt;/strong&gt;&lt;span style=&quot;font-size: 1.154em; font-weight: bold; line-height: 1.538em;&quot;&gt; One operand implicitly in the accumulator.&lt;/span&gt;&lt;/h4&gt;
+&lt;h4&gt;&lt;span style=&quot;font-size: 1.154em; line-height: 1.538em;&quot;&gt;&lt;img alt=&quot;&quot; src=&quot;/sites/default/files/files/isa/image3041-acum.jpg&quot; style=&quot;width: 113px; height: 152px; float: left;&quot; /&gt;&lt;/span&gt;&lt;/h4&gt;
+&lt;div&gt;&lt;span style=&quot;line-height: 1.538em;&quot;&gt;implicit single element storage&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;div&gt;&lt;code&gt;       load B                   ACC = mem[B]&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;       add C                    ACC = ACC + mem[C]&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;       store A                  mem[A] = ACC&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;h4&gt;&lt;strong&gt;Register-memory:&lt;/strong&gt; Only explicit operands, one may be in memory.&lt;/h4&gt;
+&lt;h4&gt;&lt;img alt=&quot;&quot; src=&quot;/sites/default/files/files/isa/image3041-mem.jpg&quot; style=&quot;font-size: 1.154em; line-height: 1.538em; width: 79px; height: 102px; float: left;&quot; /&gt;&lt;/h4&gt;
+&lt;h4&gt;&lt;span style=&quot;font-size: 12.727272033691406px; font-weight: normal; line-height: 1.538em;&quot;&gt;memory only&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;&lt;span style=&quot;line-height: 1.538em;&quot;&gt;       add B,C,A                mem[A] = mem[B] + mem[C]&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;h4&gt;&lt;strong&gt;Register-register/load-store:&lt;/strong&gt; Only explicity register operands.&lt;/h4&gt;
+&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;/sites/default/files/files/isa/image3041-aaa.jpg&quot; style=&quot;width: 76px; height: 158px; float: left;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;line-height: 1.538em;&quot;&gt;General-purpose register: multiple explicit accumulator&lt;/span&gt;&lt;/p&gt;
+&lt;div&gt;&lt;code&gt;      load B,R1                   R1 = mem[B]&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;      add C,R1                    R1 = R1 + mem[C]&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;      store R1,A                  mem[A] = R1&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;div&gt;Load-store: GPR and only loads/stores access memory&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;      load B,R1                   R1 = mem[B]&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;      load C,R2                   R2 = mem[C]&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;      add R1,R2,R1                R1 = R1 + R2&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;      store R1,A                  mem[A] = R1&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;address style=&quot;text-align: center;&quot;&gt;Load-store is used for almost all new architectures since 1980.&lt;/address&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Mon, 06 May 2013 04:33:38 +0000</pubDate>
+ <dc:creator>admin</dc:creator>
+ <guid isPermaLink="false">156 at http://cmsc411.com</guid>
+ <comments>http://cmsc411.com/instruction-set-architectures-action/classifications#comments</comments>
+</item>
+<item>
+ <title>Floating Point Answers</title>
+ <link>http://cmsc411.com/instruction-set-architectures-action/floating-point-answers</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt;Because having problems without answers is retarded and barely helps you understand.&lt;/p&gt;
+&lt;!--break--&gt;&lt;p&gt;1: Represent these mixed number in binary. Do not use a calculator and show your work. Goto 2^-12 place.&lt;/p&gt;
+&lt;ol&gt;&lt;li&gt;17&lt;sub&gt;10 &lt;/sub&gt;=    17/2 = 8R1&lt;br /&gt;              8/2 = 4R0&lt;br /&gt;              4/2 = 2R0&lt;br /&gt;              2/2 = 1R0&lt;br /&gt;              1/2 = 0R1&lt;br /&gt;              10001&lt;sub&gt;2&lt;/sub&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;p&gt;       128&lt;sub&gt;10&lt;/sub&gt; = 2^7&lt;sub&gt;10&lt;/sub&gt;&lt;br /&gt;       17/128 = 10001&lt;sub&gt;2&lt;/sub&gt; &amp;gt;&amp;gt;7 = 0.0010001&lt;sub&gt;2&lt;/sub&gt;&lt;/p&gt;
+&lt;ol&gt;&lt;li value=&quot;2&quot;&gt;10&lt;sub&gt;10&lt;/sub&gt; = 1010&lt;sub&gt;2&lt;/sub&gt;&lt;br /&gt;1&lt;sub&gt;2&lt;/sub&gt;/1010&lt;sub&gt;2 &lt;/sub&gt;= (10/1010) / 10 = (100/1010) / 100 = (10000/1010) / 10000 = 0.0001 R110 / 1010 = 0.00011 R10 / 1010 = 0.000110 R100 / 1010 = 0.0001100 R1000 / 1010 = 0.00011001 &lt;strong&gt;R110 / 1010&lt;/strong&gt; (pattern here) = .000110011001&lt;/li&gt;
+&lt;/ol&gt;&lt;p style=&quot;margin-left:.75in;&quot;&gt; &lt;/p&gt;
+&lt;ol&gt;&lt;li value=&quot;3&quot;&gt;21&lt;sub&gt;10&lt;/sub&gt; = 10101&lt;sub&gt;2 &lt;/sub&gt;, 20&lt;sub&gt;10&lt;/sub&gt; = 10100&lt;sub&gt;2&lt;/sub&gt;&lt;br /&gt;10101/10100 = 1 R1/10100 =  1.0000 R10000 / 10100 = 1.00001 R1100 / 10100 = 1.000011 R100 / 10100 = 1.0000110 R1000 / 10100 = 1.00001100 &lt;strong&gt;R10000 / 10100&lt;/strong&gt; (pattern here) = 1.00001100110011&lt;/li&gt;
+&lt;/ol&gt;&lt;p&gt;2: Answer these questions.&lt;/p&gt;
+&lt;ol&gt;&lt;li&gt;There are 32 bits in a single precision 32-bit word.&lt;/li&gt;
+&lt;li&gt;There are 23bits in the significand (32-8 exponent bits – 1 sign bit = 23)&lt;/li&gt;
+&lt;/ol&gt;&lt;p&gt;3: Convert these single-precision floating-point formatted numbers into decimal numbers. Bias of 127. The | and whitespace are simply there to help make it easier to read.&lt;/p&gt;
+&lt;ol&gt;&lt;li&gt;0 sign bit = positive number&lt;br /&gt;Exponent 10000010 = 130&lt;sub&gt;10&lt;/sub&gt; – 127 = 3&lt;sub&gt;10 &lt;/sub&gt;&lt;br /&gt;Mantissa1.101&lt;sub&gt;2 &lt;/sub&gt;&amp;lt;&amp;lt; 3 =1101&lt;sub&gt;2&lt;/sub&gt; = 13&lt;sub&gt;10&lt;/sub&gt;&lt;br /&gt;Thus 13.0&lt;/li&gt;
+&lt;li value=&quot;2&quot;&gt;1 sign bit = negative number&lt;br /&gt;Exponent 1111010&lt;sub&gt;2&lt;/sub&gt; = 122&lt;sub&gt;10&lt;/sub&gt; – 127 = -5&lt;sub&gt;10&lt;/sub&gt;&lt;br /&gt;Mantissa 1.10011001100110011001100&lt;sub&gt;2&lt;/sub&gt; &amp;gt;&amp;gt; 5 = .0001100110011001100110011&lt;br /&gt;-0.000110011001100110011 = 2^-4 + 2^-5 + 2^-8 + 2^-9 + 2^-12 + 2^-13 + 2^-16 + 2^-17 =&lt;br /&gt;1/16 + 1/32 + 1/256 + 1/512 + 1/4096 + 1/8192 + 1/65536 + 1/131072 = 0.0999984741 = ~0.1 = 1/10&lt;/li&gt;
+&lt;li value=&quot;3&quot;&gt;0 sign bit = positive number&lt;br /&gt;Exponent 10010010&lt;sub&gt;2&lt;/sub&gt; = 146&lt;sub&gt;10&lt;/sub&gt; – 127 = 19&lt;sub&gt;10&lt;/sub&gt;&lt;br /&gt;Mantissa 1.1110100001100110101010&lt;sub&gt;2&lt;/sub&gt; &amp;lt;&amp;lt; 19 = 11110100001100110101.010&lt;sub&gt;2&lt;/sub&gt; = 11110100001100110101&lt;sub&gt;2&lt;/sub&gt; + .010&lt;sub&gt;2&lt;/sub&gt; = 2^19 + 2^18… + 2^-2 = 1000245&lt;sub&gt;10&lt;/sub&gt; + 1/4&lt;sub&gt;10&lt;/sub&gt;&lt;br /&gt;1000245.25&lt;/li&gt;
+&lt;/ol&gt;&lt;p&gt; &lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Sun, 05 May 2013 03:23:45 +0000</pubDate>
+ <dc:creator>Jimyo Lin</dc:creator>
+ <guid isPermaLink="false">149 at http://cmsc411.com</guid>
+ <comments>http://cmsc411.com/instruction-set-architectures-action/floating-point-answers#comments</comments>
+</item>
+<item>
+ <title>Floating Point Quiz</title>
+ <link>http://cmsc411.com/instruction-set-architectures-action/floating-point-quiz</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt;Here&#039;s a quiz to reinforce floating point.&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;!--break--&gt;&lt;p&gt;1: Represent these mixed number in binary. Do not use a calculator and show your work. Goto 2^-12 place&lt;/p&gt;
+&lt;ol&gt;&lt;li&gt;17/128&lt;sub&gt;10&lt;/sub&gt; = ?&lt;/li&gt;
+&lt;li&gt;1/10&lt;sub&gt;10&lt;/sub&gt; = ?&lt;/li&gt;
+&lt;li&gt;21/20&lt;sub&gt;10&lt;/sub&gt; = ?&lt;/li&gt;
+&lt;/ol&gt;&lt;p&gt;2: Answer these questions.&lt;/p&gt;
+&lt;ol&gt;&lt;li&gt;How many bits are in a single 32 bit word?&lt;/li&gt;
+&lt;li&gt;If in a single 32 bit word the exponent width is 8 bits, then how many bits are in the significand?&lt;/li&gt;
+&lt;/ol&gt;&lt;p&gt;3: Convert these single-precision floating-point formatted numbers into decimal numbers. Bias of 127. The | and whitespace are simply there to help make it easier to read. &lt;/p&gt;
+&lt;p&gt;Sign bit|8 exponent bits | 23 significand bits&lt;/p&gt;
+&lt;ol&gt;&lt;li&gt;0|10000010|0000 0000 0000 0000 0001 101&lt;/li&gt;
+&lt;li&gt;1|01111010|0001 1001 1001 0001 1001 100&lt;/li&gt;
+&lt;li&gt;0|10010010|1111 0100 0011 0011 0101 010&lt;/li&gt;
+&lt;/ol&gt;&lt;p&gt; &lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Sun, 05 May 2013 03:12:03 +0000</pubDate>
+ <dc:creator>Jimyo Lin</dc:creator>
+ <guid isPermaLink="false">148 at http://cmsc411.com</guid>
+ <comments>http://cmsc411.com/instruction-set-architectures-action/floating-point-quiz#comments</comments>
+</item>
+<item>
+ <title>Instruction Set Principles</title>
+ <link>http://cmsc411.com/instruction-set-architectures-action/instruction-set-principles</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;h2&gt;What is an ISA?&lt;/h2&gt;
+&lt;h4&gt;ISA (instruction set architecture)&lt;/h4&gt;
+&lt;ul&gt;&lt;li&gt;A well-define hardware/software interface&lt;/li&gt;
+&lt;li&gt;&lt;span style=&quot;line-height: 1.538em;&quot;&gt;The &lt;span style=&quot;color:#ff0000;&quot;&gt;“contract”&lt;/span&gt; between software and hardware&lt;/span&gt;
+&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;line-height: 1.538em;&quot;&gt;&lt;span style=&quot;color:#ff0000;&quot;&gt;Functional definition&lt;/span&gt; of operations, modes, and storage locations supported by hardware&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span style=&quot;line-height: 1.538em;&quot;&gt;&lt;span style=&quot;color:#ff0000;&quot;&gt;Precise description&lt;/span&gt; of how to invoke, and access them&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span style=&quot;line-height: 1.538em;&quot;&gt;No guarantees regarding &lt;/span&gt;
+&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;line-height: 1.538em;&quot;&gt;How operations are implemented &lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span style=&quot;line-height: 1.538em;&quot;&gt;Which operations are fast and which are slow &lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span style=&quot;line-height: 1.538em;&quot;&gt;Which operations take more power and which take less&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;&lt;span style=&quot;line-height: 1.538em;&quot;&gt;RISC vs CISC Foreshadowing&lt;/span&gt;&lt;/h2&gt;
+&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;line-height: 1.538em;&quot;&gt;Recall performance equation:&lt;/span&gt;
+&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;line-height: 1.538em;&quot;&gt;(&lt;span style=&quot;color:#ff0000;&quot;&gt;instructions/program&lt;/span&gt;) * (&lt;span style=&quot;color:#ff0000;&quot;&gt;cycles/instruction&lt;/span&gt;) * (&lt;span style=&quot;color:#ff0000;&quot;&gt;seconds/cycle&lt;/span&gt;)&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span style=&quot;color:#ff0000;&quot;&gt;CISC&lt;/span&gt; (Complex Instruction Set Computing)
+&lt;ul&gt;&lt;li&gt;Improve “instructions/program” with “complex” instructions&lt;/li&gt;
+&lt;li&gt;Easy for assembly-level programmers, good code density&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span style=&quot;color:#ff0000;&quot;&gt;RISC&lt;/span&gt; (Reduced Instruction Set Computing)
+&lt;ul&gt;&lt;li&gt;Improve “cycles/instruction” with many single-cycle instructions&lt;/li&gt;
+&lt;li&gt;Increases “instruction/program”, but hopefully not as much
+&lt;ul&gt;&lt;li&gt;Help from smart compiler&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Perhaps improve clock cycle time (seconds/cycle)
+&lt;ul&gt;&lt;li&gt;via aggressive implementation allowed by simpler instructions&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Fri, 03 May 2013 20:31:06 +0000</pubDate>
+ <dc:creator>jwang113</dc:creator>
+ <guid isPermaLink="false">118 at http://cmsc411.com</guid>
+ <comments>http://cmsc411.com/instruction-set-architectures-action/instruction-set-principles#comments</comments>
+</item>
+<item>
+ <title>Floating Points In Action</title>
+ <link>http://cmsc411.com/instruction-set-architectures-action/floating-points-action</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;In most ISA&#039;s (Instruction Set Architectures), floating points are given their own registers and operations which yields different instructions for the ALU (Arithmetic Logic Unit) such as the one seen in the teaser image. &lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;Specifically, the MIPS ISA is done on its own processor called the FPU (Floating Point Unit) which includes 16 double precision floating point registers and 32 single precision floating point registers. (Note that these registers are exclusive to floating point numbers.) The main difference between double precision and single precision floating points as deemed by IEEE is that single precision floating point standard representation requires only a 32 bit word (0-31). Whereas double&lt;span style=&quot;line-height: 1.538em;&quot;&gt; precision floating point standard representation&lt;/span&gt;&lt;span style=&quot;line-height: 1.538em;&quot;&gt; requires a 64 bit word (0-63). As referenced in &quot;Introduction&quot;, MIPS double precision floating points are actually stored in two consecutive registers in order to accommodate for representations of extremely large (or small) values. &lt;/span&gt;&lt;span style=&quot;line-height: 1.538em;&quot;&gt;This means that while double precision floating points are more accurate than single precision floating points, they also cost more memory and are more expensive to use since a machine will have to read/write to/from two registers instead of only one (cost vs. speed). &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;One consequence of the MIPS architecture using the FPU processor is the need for its own instructions. This in turn mandates that mixing integer registers with floating point registers in instructions is illegal. So &lt;em&gt;how&lt;/em&gt; are we supposed to add an integer say 3 + the floating point, say .0000000002? MIPS covers that too! A data transfer between an integer register and an floating point register using load/store instructions for each type respectfully, will convert the number to the proper register, then complete the operation. For example: &lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;add.s    $s1, $s2, $s3   (Illegal, add.s expects only FPU registers)&lt;/li&gt;
+&lt;li&gt;add      $f1,  $f2, $f3    (Illegal, add expects only CPU registers)&lt;/li&gt;
+&lt;li&gt;add.s   $f1, $r2, $f3     (Illegal, again add.s expects &lt;em&gt;only&lt;/em&gt; FPU registers)&lt;/li&gt;
+&lt;li&gt;add      $s1, $f2, $r3    (Illegal, again add expects &lt;em&gt;only &lt;/em&gt;CPU registers)&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt; &lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Thu, 02 May 2013 21:06:25 +0000</pubDate>
+ <dc:creator>fragano</dc:creator>
+ <guid isPermaLink="false">93 at http://cmsc411.com</guid>
+ <comments>http://cmsc411.com/instruction-set-architectures-action/floating-points-action#comments</comments>
+</item>
+<item>
+ <title>Floating Points</title>
+ <link>http://cmsc411.com/instruction-set-architectures-action/floating-points</link>
+ <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;http://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/IEEE_754_Single_Floating_Point_Format.svg/618px-IEEE_754_Single_Floating_Point_Format.svg.png&quot; style=&quot;width: 618px; height: 125px;&quot; /&gt;   &lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-family: arial, helvetica, sans-serif; font-size: 14px; line-height: 25px;&quot;&gt;Number systems are everywhere and shape everything around us. We all have an understanding of numbers and learn about the different forms of numbers at a young age. Most real world understanding of numbers consists of real numbers; a combination of integer values and fractions representing on infinite number line.&lt;/span&gt;&lt;span style=&quot;font-family: arial, helvetica, sans-serif; font-size: 14px; line-height: 25px;&quot;&gt; In computers, multimedia application have heavy use of floating point.&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+ <pubDate>Wed, 01 May 2013 02:51:45 +0000</pubDate>
+ <dc:creator>fragano</dc:creator>
+ <guid isPermaLink="false">59 at http://cmsc411.com</guid>
+ <comments>http://cmsc411.com/instruction-set-architectures-action/floating-points#comments</comments>
+</item>
+</channel>
+</rss>
